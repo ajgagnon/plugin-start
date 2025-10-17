@@ -15,7 +15,7 @@ return array(
 		\RankAIAppCore\AppCore\AppCoreServiceProvider::class,
 		\RankAIAppCore\Config\ConfigServiceProvider::class,
 		\RankAIAppCore\Assets\AssetsServiceProvider::class,
-        \RankAI\Admin\AdminServiceProvider::class,
+		\RankAI\Admin\AdminServiceProvider::class,
 	),
 
 	/**
@@ -63,7 +63,9 @@ return array(
 	 * - 'user.logged_out'
 	 * - 'user.can'
 	 */
-	'middleware'             => array(),
+	'middleware'             => array(
+		'admin.page' => \RankAI\Middleware\AdminPageMiddleware::class,
+	),
 
 	/**
 	 * Register middleware groups.

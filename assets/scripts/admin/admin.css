@@ -1,8 +1,10 @@
-@layer theme, base, components, utilities;
-
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
-
+@import "tailwindcss/theme.css" source("./**/*.{js,jsx,ts,tsx}");
+@layer utilities {
+  .rank-ai {
+    @import "tailwindcss/preflight.css";
+    @import "tailwindcss/utilities.css";
+  }
+}
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -124,4 +126,7 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+#wpcontent:has(.rank-ai) {
+  padding: 0;
 }

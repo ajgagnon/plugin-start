@@ -6,7 +6,7 @@
   "tailwind": {
     "config": "",
     "content": ["./assets/scripts/admin/**/*.{js, jsx}"],
-    "css": "styles/admin.css",
+    "css": "./assets/scripts/admin/admin.css",
     "baseColor": "neutral",
     "cssVariables": true,
     "important": ".rank-ai",

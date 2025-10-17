@@ -7,5 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 \RankAI\RankAI::route()
 	->get()
 	->where( 'admin', 'rank-ai' )
-	->name( 'rank-ai.show' )
+	->name( 'admin.dashboard' )
+	->middleware( 'admin.page' )
 	->handle( 'DashboardController@index' );
