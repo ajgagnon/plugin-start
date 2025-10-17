@@ -18,10 +18,19 @@ class AdminMenuPageService {
 	 */
 	public function register_admin_pages() {
 		add_menu_page(
-			'Rank AI',
-			'Rank AI',
+			_x( 'Rank AI', 'admin menu page title', 'rank-ai' ),
+			_x( 'Dashboard', 'admin menu page title', 'rank-ai' ),
 			'manage_options',
 			'rank-ai',
+			'__return_false'
+		);
+
+		add_submenu_page(
+			'rank-ai',
+			_x( 'Settings', 'admin menu page title', 'rank-ai' ),
+			_x( 'Settings', 'admin menu page title', 'rank-ai' ),
+			'manage_options',
+			'rank-ai-settings',
 			'__return_false'
 		);
 	}

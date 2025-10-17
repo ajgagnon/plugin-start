@@ -89,29 +89,31 @@ export default function Page() {
   };
 
   return (
-    <SidebarProvider>
-      <AppSidebar onNavigate={setCurrentPage} currentPage={currentPage} />
-      <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4 sticky top-[32px] bg-background z-10">
-          <SidebarTrigger className="-ml-1 border-0" />
-          <Separator
-            orientation="vertical"
-            className="mr-2 data-[orientation=vertical]:h-4"
-          />
-          <Breadcrumb>
-            <BreadcrumbList className="p-0 m-0">
-              <BreadcrumbItem className="!mb-0">
-                <BreadcrumbLink>{currentPage.section}</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className=":marker:hidden" />
-              <BreadcrumbItem className="!mb-0">
-                <BreadcrumbPage>{currentPage.page}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </header>
-        {renderContent()}
-      </SidebarInset>
-    </SidebarProvider>
+    <div className="rank-ai">
+      <SidebarProvider>
+        <AppSidebar onNavigate={setCurrentPage} currentPage={currentPage} />
+        <SidebarInset>
+          <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4 bg-background z-10">
+            <SidebarTrigger className="-ml-1 border-0" />
+            <Separator
+              orientation="vertical"
+              className="mr-2 data-[orientation=vertical]:h-4"
+            />
+            <Breadcrumb>
+              <BreadcrumbList className="p-0 m-0">
+                <BreadcrumbItem className="!mb-0">
+                  <BreadcrumbLink>{currentPage.section}</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className=":marker:hidden" />
+                <BreadcrumbItem className="!mb-0">
+                  <BreadcrumbPage>{currentPage.page}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </header>
+          {renderContent()}
+        </SidebarInset>
+      </SidebarProvider>
+    </div>
   );
 }

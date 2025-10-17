@@ -12,6 +12,6 @@ class DashboardController {
 	 * @return string
 	 */
 	public function index() {
-		return '<div id="app" class="rank-ai"></div>';
+		return '<div id="app"></div>';
 	}
 }
