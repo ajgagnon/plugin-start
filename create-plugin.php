@@ -262,12 +262,35 @@ class PluginTemplateCreator {
 		$content = str_replace( 'use ' . $this->original['namespace_core'] . '\\', 'use ' . $this->new['namespace_core'] . '\\', $content );
 		$content = str_replace( 'use ' . $this->original['namespace'] . '\\', 'use ' . $this->new['namespace'] . '\\', $content );
 
+		// Replace fully qualified class names (with leading backslash).
+		$content = str_replace( '\\' . $this->original['namespace_vendors'] . '\\', '\\' . $this->new['namespace_vendors'] . '\\', $content );
+		$content = str_replace( '\\' . $this->original['namespace_appcore'] . '\\', '\\' . $this->new['namespace_appcore'] . '\\', $content );
+		$content = str_replace( '\\' . $this->original['namespace_core'] . '\\', '\\' . $this->new['namespace_core'] . '\\', $content );
+		$content = str_replace( '\\' . $this->original['namespace'] . '\\', '\\' . $this->new['namespace'] . '\\', $content );
+
+		// Replace namespace references in strings (for config arrays).
+		$content = str_replace( "'" . $this->original['namespace_appcore'] . '\\\\', "'" . $this->new['namespace_appcore'] . '\\\\', $content );
+		$content = str_replace( "'" . $this->original['namespace_core'] . '\\\\', "'" . $this->new['namespace_core'] . '\\\\', $content );
+		$content = str_replace( "'" . $this->original['namespace'] . '\\\\', "'" . $this->new['namespace'] . '\\\\', $content );
+
+		// Replace @mixin references.
+		$content = str_replace( '@mixin \\' . $this->original['namespace_appcore'] . '\\', '@mixin \\' . $this->new['namespace_appcore'] . '\\', $content );
+		$content = str_replace( '@mixin \\' . $this->original['namespace_core'] . '\\', '@mixin \\' . $this->new['namespace_core'] . '\\', $content );
+		$content = str_replace( '@mixin \\' . $this->original['namespace'] . '\\', '@mixin \\' . $this->new['namespace'] . '\\', $content );
+
 		// Replace constants.
 		$content = preg_replace( '/\b' . $this->original['constant_prefix'] . '_/', $this->new['constant_prefix'] . '_', $content );
+
+		// Replace constant string values (like 'RANKAI.config' in define statements).
+		$content = str_replace( "'" . $this->original['constant_prefix'] . '.', "'" . $this->new['constant_prefix'] . '.', $content );
 
 		// Replace text domain in translation functions.
 		$content = str_replace( "'" . $this->original['slug'] . "'", "'" . $this->new['slug'] . "'", $content );
 		$content = str_replace( '"' . $this->original['slug'] . '"', '"' . $this->new['slug'] . '"', $content );
+
+		// Replace submenu slugs and composite slugs (like 'rank-ai-settings').
+		$content = str_replace( "'" . $this->original['slug'] . '-', "'" . $this->new['slug'] . '-', $content );
+		$content = str_replace( '"' . $this->original['slug'] . '-', '"' . $this->new['slug'] . '-', $content );
 
 		// Replace @package annotations.
 		$content = str_replace( '@package ' . $this->original['namespace'], '@package ' . $this->new['namespace'], $content );
