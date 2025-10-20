@@ -65,6 +65,9 @@
   },
   "scripts": {
     "analyse": "php -d memory_limit=4G vendor/bin/phpstan analyse",
+    "create-plugin": [
+      "@php create-plugin.php"
+    ],
     "install-test-env": [
       "wpemerge config:create"
     ],
@@ -74,6 +77,12 @@
       "@php wpemerge assets:build"
     ],
     "post-create-project-cmd": "@install-dev-env"
+  },
+  "scripts-descriptions": {
+    "analyse": "Run PHPStan static analysis",
+    "create-plugin": "Transform this plugin into a new plugin (interactive wizard)",
+    "install-test-env": "Install test environment",
+    "install-dev-env": "Install development environment"
   },
   "extra": {
     "imposter": {
