@@ -7,9 +7,9 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Image;
+namespace AndreBaseAppCore\Image;
 
-use RankAICore\Helpers\MixedType;
+use AndreBaseCore\Helpers\MixedType;
 
 class Image {
 	/**

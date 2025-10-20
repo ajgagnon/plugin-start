@@ -7,7 +7,7 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Exceptions;
+namespace AndreBaseCore\Exceptions;
 
 use Exception as PhpException;
 

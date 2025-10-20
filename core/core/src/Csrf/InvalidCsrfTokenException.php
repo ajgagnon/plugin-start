@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Csrf;
+namespace AndreBaseCore\Csrf;
 
-use RankAICore\Exceptions\Exception;
+use AndreBaseCore\Exceptions\Exception;
 
 class InvalidCsrfTokenException extends Exception {
 

@@ -7,11 +7,11 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Assets;
+namespace AndreBaseAppCore\Assets;
 
-use RankAICore\Helpers\MixedType;
-use RankAICore\Helpers\Url;
-use RankAIAppCore\Config\Config;
+use AndreBaseCore\Helpers\MixedType;
+use AndreBaseCore\Helpers\Url;
+use AndreBaseAppCore\Config\Config;
 
 class Assets {
 	/**

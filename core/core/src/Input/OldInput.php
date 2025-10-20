@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Input;
+namespace AndreBaseCore\Input;
 
-use RankAICore\Flash\Flash;
-use RankAICore\Support\Arr;
+use AndreBaseCore\Flash\Flash;
+use AndreBaseCore\Support\Arr;
 
 /**
  * Provide a way to get values from the previous request.

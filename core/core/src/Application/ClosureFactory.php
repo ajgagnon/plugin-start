@@ -7,7 +7,7 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Application;
+namespace AndreBaseCore\Application;
 
 use Closure;
 

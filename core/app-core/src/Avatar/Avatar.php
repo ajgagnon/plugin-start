@@ -7,7 +7,7 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Avatar;
+namespace AndreBaseAppCore\Avatar;
 
 use WP_Comment;
 

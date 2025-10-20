@@ -7,12 +7,12 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Routing;
+namespace AndreBaseCore\Routing;
 
 use Closure;
-use RankAICore\Helpers\HasAttributesTrait;
-use RankAICore\Routing\Conditions\ConditionInterface;
-use RankAICore\View\ViewService;
+use AndreBaseCore\Helpers\HasAttributesTrait;
+use AndreBaseCore\Routing\Conditions\ConditionInterface;
+use AndreBaseCore\View\ViewService;
 
 /**
  * Provide a fluent interface for registering routes with the router.

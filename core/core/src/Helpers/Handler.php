@@ -7,12 +7,12 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Helpers;
+namespace AndreBaseCore\Helpers;
 
 use Closure;
-use RankAICore\Application\GenericFactory;
-use RankAICore\Exceptions\ClassNotFoundException;
-use RankAICore\Exceptions\ConfigurationException;
+use AndreBaseCore\Application\GenericFactory;
+use AndreBaseCore\Exceptions\ClassNotFoundException;
+use AndreBaseCore\Exceptions\ConfigurationException;
 
 /**
  * Represent a generic handler - a Closure or a class method to be resolved from the service container

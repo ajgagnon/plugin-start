@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\ServiceProviders;
+namespace AndreBaseCore\ServiceProviders;
 
-use RankAIVendors\Pimple\Container;
-use RankAICore\Support\Arr;
+use AndreBaseVendors\Pimple\Container;
+use AndreBaseCore\Support\Arr;
 
 /**
  * Allows objects to extend the config.
@@ -56,11 +56,11 @@ trait ExtendsConfigTrait {
 	 * @return void
 	 */
 	public function extendConfig( $container, $key, $default ) {
-		$config = isset( $container[ RANKAI_CONFIG_KEY ] ) ? $container[ RANKAI_CONFIG_KEY ] : [];
+		$config = isset( $container[ ANDREBASE_CONFIG_KEY ] ) ? $container[ ANDREBASE_CONFIG_KEY ] : [];
 		$config = Arr::get( $config, $key, $default );
 
-		$container[ RANKAI_CONFIG_KEY ] = array_merge(
-			$container[ RANKAI_CONFIG_KEY ],
+		$container[ ANDREBASE_CONFIG_KEY ] = array_merge(
+			$container[ ANDREBASE_CONFIG_KEY ],
 			[ $key => $this->replaceConfig( $default, $config ) ]
 		);
 	}

@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\View;
+namespace AndreBaseCore\View;
 
-use RankAICore\Helpers\MixedType;
+use AndreBaseCore\Helpers\MixedType;
 
 /**
  * Render view files with php.

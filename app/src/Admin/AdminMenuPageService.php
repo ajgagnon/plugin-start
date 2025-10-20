@@ -1,6 +1,6 @@
 <?php
 
-namespace RankAI\Admin;
+namespace AndreBase\Admin;
 
 /**
  * Handles creation and enqueueing of admin menu pages and assets.
@@ -18,19 +18,19 @@ class AdminMenuPageService {
 	 */
 	public function register_admin_pages() {
 		add_menu_page(
-			_x( 'Dashboard', 'admin menu page title', 'rank-ai' ),
-			_x( 'Rank AI', 'admin menu page title', 'rank-ai' ),
+			_x( 'Dashboard', 'admin menu page title', 'andre-base' ),
+			_x( 'Rank AI', 'admin menu page title', 'andre-base' ),
 			'manage_options',
-			'rank-ai',
+			'andre-base',
 			'__return_false'
 		);
 
 		add_submenu_page(
-			'rank-ai',
-			_x( 'Settings', 'admin menu page title', 'rank-ai' ),
-			_x( 'Settings', 'admin menu page title', 'rank-ai' ),
+			'andre-base',
+			_x( 'Settings', 'admin menu page title', 'andre-base' ),
+			_x( 'Settings', 'admin menu page title', 'andre-base' ),
 			'manage_options',
-			'rank-ai-settings',
+			'andre-base-settings',
 			'__return_false'
 		);
 	}

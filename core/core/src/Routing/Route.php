@@ -7,12 +7,12 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Routing;
+namespace AndreBaseCore\Routing;
 
-use RankAICore\Exceptions\ConfigurationException;
-use RankAICore\Helpers\HasAttributesTrait;
-use RankAICore\Requests\RequestInterface;
-use RankAICore\Routing\Conditions\ConditionInterface;
+use AndreBaseCore\Exceptions\ConfigurationException;
+use AndreBaseCore\Helpers\HasAttributesTrait;
+use AndreBaseCore\Requests\RequestInterface;
+use AndreBaseCore\Routing\Conditions\ConditionInterface;
 
 /**
  * Represent a route

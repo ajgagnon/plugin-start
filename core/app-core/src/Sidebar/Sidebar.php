@@ -7,7 +7,7 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Sidebar;
+namespace AndreBaseAppCore\Sidebar;
 
 class Sidebar {
 	/**

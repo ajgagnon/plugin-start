@@ -6,12 +6,12 @@
  * @license   https://www.gnu.org/licenses/gpl-2.0.html GPL-2.0
  * @link      https://surecart.com/
  */
-namespace RankAICore\Controllers;
+namespace AndreBaseCore\Controllers;
 
-use RankAIVendors\Psr\Http\Message\ResponseInterface;
-use RankAICore\Exceptions\ConfigurationException;
-use RankAICore\Requests\RequestInterface;
-use RankAICore\View\ViewService;
+use AndreBaseVendors\Psr\Http\Message\ResponseInterface;
+use AndreBaseCore\Exceptions\ConfigurationException;
+use AndreBaseCore\Requests\RequestInterface;
+use AndreBaseCore\View\ViewService;
 
 /**
  * Handles normal WordPress requests without interfering

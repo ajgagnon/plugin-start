@@ -1,6 +1,6 @@
 <?php
 
-namespace RankAI\Controllers\Admin;
+namespace AndreBase\Controllers\Admin;
 
 /**
  * Dashboard controller.

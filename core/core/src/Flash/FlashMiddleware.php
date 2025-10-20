@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Flash;
+namespace AndreBaseCore\Flash;
 
 use Closure;
-use RankAICore\Requests\RequestInterface;
+use AndreBaseCore\Requests\RequestInterface;
 
 /**
  * Store current request data and clear old request data

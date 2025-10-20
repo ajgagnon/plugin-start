@@ -7,14 +7,14 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Responses;
+namespace AndreBaseCore\Responses;
 
-use RankAIVendors\GuzzleHttp\Psr7\Utils as Psr7Utils;
-use RankAIVendors\GuzzleHttp\Psr7\Response as Psr7Response;
-use RankAICore\Requests\RequestInterface;
-use RankAIVendors\Psr\Http\Message\ResponseInterface;
-use RankAIVendors\Psr\Http\Message\StreamInterface;
-use RankAICore\View\ViewService;
+use AndreBaseVendors\GuzzleHttp\Psr7\Utils as Psr7Utils;
+use AndreBaseVendors\GuzzleHttp\Psr7\Response as Psr7Response;
+use AndreBaseCore\Requests\RequestInterface;
+use AndreBaseVendors\Psr\Http\Message\ResponseInterface;
+use AndreBaseVendors\Psr\Http\Message\StreamInterface;
+use AndreBaseCore\View\ViewService;
 
 /**
  * A collection of tools for the creation of responses.

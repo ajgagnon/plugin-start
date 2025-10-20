@@ -7,27 +7,27 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Kernels;
+namespace AndreBaseCore\Kernels;
 
 use Exception;
-use RankAIVendors\Pimple\Container;
-use RankAIVendors\Psr\Http\Message\ResponseInterface;
+use AndreBaseVendors\Pimple\Container;
+use AndreBaseVendors\Psr\Http\Message\ResponseInterface;
 use WP_Query;
-use RankAICore\Application\GenericFactory;
-use RankAICore\Exceptions\ConfigurationException;
-use RankAICore\Exceptions\ErrorHandlerInterface;
-use RankAICore\Helpers\Handler;
-use RankAICore\Helpers\HandlerFactory;
-use RankAICore\Middleware\ExecutesMiddlewareTrait;
-use RankAICore\Middleware\HasMiddlewareDefinitionsTrait;
-use RankAICore\Middleware\ReadsHandlerMiddlewareTrait;
-use RankAICore\Requests\RequestInterface;
-use RankAICore\Responses\ConvertsToResponseTrait;
-use RankAICore\Responses\ResponseService;
-use RankAICore\Routing\HasQueryFilterInterface;
-use RankAICore\Routing\Router;
-use RankAICore\Routing\SortsMiddlewareTrait;
-use RankAICore\View\ViewService;
+use AndreBaseCore\Application\GenericFactory;
+use AndreBaseCore\Exceptions\ConfigurationException;
+use AndreBaseCore\Exceptions\ErrorHandlerInterface;
+use AndreBaseCore\Helpers\Handler;
+use AndreBaseCore\Helpers\HandlerFactory;
+use AndreBaseCore\Middleware\ExecutesMiddlewareTrait;
+use AndreBaseCore\Middleware\HasMiddlewareDefinitionsTrait;
+use AndreBaseCore\Middleware\ReadsHandlerMiddlewareTrait;
+use AndreBaseCore\Requests\RequestInterface;
+use AndreBaseCore\Responses\ConvertsToResponseTrait;
+use AndreBaseCore\Responses\ResponseService;
+use AndreBaseCore\Routing\HasQueryFilterInterface;
+use AndreBaseCore\Routing\Router;
+use AndreBaseCore\Routing\SortsMiddlewareTrait;
+use AndreBaseCore\View\ViewService;
 
 /**
  * Describes how a request is handled.
@@ -142,7 +142,7 @@ class HttpKernel implements HttpKernelInterface {
 	 * @return ResponseInterface|null
 	 */
 	protected function getResponse() {
-		return isset( $this->container[ RANKAI_RESPONSE_KEY ] ) ? $this->container[ RANKAI_RESPONSE_KEY ] : null;
+		return isset( $this->container[ ANDREBASE_RESPONSE_KEY ] ) ? $this->container[ ANDREBASE_RESPONSE_KEY ] : null;
 	}
 
 	/**
@@ -244,7 +244,7 @@ class HttpKernel implements HttpKernelInterface {
 			)
 		);
 
-		$this->container[ RANKAI_RESPONSE_KEY ] = $response;
+		$this->container[ ANDREBASE_RESPONSE_KEY ] = $response;
 
 		return $response;
 	}
@@ -312,7 +312,7 @@ class HttpKernel implements HttpKernelInterface {
 				continue;
 			}
 
-			$this->container[ RANKAI_APPLICATION_KEY ]
+			$this->container[ ANDREBASE_APPLICATION_KEY ]
 				->renderConfigExceptions(
 					function () use ( $route, &$query_vars ) {
 						$query_vars = $route->applyQueryFilter( $this->request, $query_vars );
@@ -346,7 +346,7 @@ class HttpKernel implements HttpKernelInterface {
 
 			add_action( 'surecart.kernels.http_kernel.respond', [ $this, 'respond' ] );
 
-			return RANKAI_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'view.php';
+			return ANDREBASE_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'view.php';
 		}
 
 		// No route has matched, but we still want to compose views.
@@ -355,7 +355,7 @@ class HttpKernel implements HttpKernelInterface {
 		if ( ! empty( $composers ) ) {
 			add_action( 'surecart.kernels.http_kernel.respond', [ $this, 'compose' ] );
 
-			return RANKAI_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'view.php';
+			return ANDREBASE_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'view.php';
 		}
 
 		return $template;

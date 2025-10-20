@@ -7,11 +7,11 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Middleware;
+namespace AndreBaseCore\Middleware;
 
 use Closure;
-use RankAIVendors\Psr\Http\Message\ResponseInterface;
-use RankAICore\Requests\RequestInterface;
+use AndreBaseVendors\Psr\Http\Message\ResponseInterface;
+use AndreBaseCore\Requests\RequestInterface;
 
 /**
  * Executes middleware.

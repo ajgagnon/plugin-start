@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Responses;
+namespace AndreBaseCore\Responses;
 
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide responses dependencies.
@@ -21,12 +21,12 @@ class ResponsesServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container[ RANKAI_RESPONSE_SERVICE_KEY ] = function ( $c ) {
-			return new ResponseService( $c[ RANKAI_REQUEST_KEY ], $c[ RANKAI_VIEW_SERVICE_KEY ] );
+		$container[ ANDREBASE_RESPONSE_SERVICE_KEY ] = function ( $c ) {
+			return new ResponseService( $c[ ANDREBASE_REQUEST_KEY ], $c[ ANDREBASE_VIEW_SERVICE_KEY ] );
 		};
 
-		$app = $container[ RANKAI_APPLICATION_KEY ];
-		$app->alias( 'responses', RANKAI_RESPONSE_SERVICE_KEY );
+		$app = $container[ ANDREBASE_APPLICATION_KEY ];
+		$app->alias( 'responses', ANDREBASE_RESPONSE_SERVICE_KEY );
 
 		$app->alias(
 			'response',

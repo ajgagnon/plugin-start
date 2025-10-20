@@ -7,7 +7,7 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Concerns;
+namespace AndreBaseAppCore\Concerns;
 
 use Exception;
 

@@ -3,7 +3,7 @@ import { createRoot } from "@wordpress/element";
 import history from "./router/history";
 import "./admin.css";
 
-const menuItems = document.querySelectorAll("#toplevel_page_rank-ai a");
+const menuItems = document.querySelectorAll("#toplevel_page_andre-base a");
 menuItems.forEach((a) => {
   a.addEventListener("click", (e) => {
     e.preventDefault();

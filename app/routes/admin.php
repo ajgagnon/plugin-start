@@ -4,16 +4,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-\RankAI\RankAI::route()
+\AndreBase\AndreBase::route()
 	->get()
-	->where( 'admin', 'rank-ai' )
+	->where( 'admin', 'andre-base' )
 	->name( 'admin.dashboard' )
 	->middleware( 'admin.page' )
 	->handle( 'DashboardController@index' );
 
-\RankAI\RankAI::route()
+\AndreBase\AndreBase::route()
 	->get()
-	->where( 'admin', 'rank-ai-settings' )
+	->where( 'admin', 'andre-base-settings' )
 	->name( 'admin.settings' )
 	->middleware( 'admin.page' )
 	->handle( 'DashboardController@index' );

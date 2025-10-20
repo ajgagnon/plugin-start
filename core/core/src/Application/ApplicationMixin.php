@@ -7,14 +7,14 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Application;
+namespace AndreBaseCore\Application;
 
-use RankAIVendors\Pimple\Container;
-use RankAIVendors\Psr\Http\Message\ResponseInterface;
-use RankAICore\Requests\RequestInterface;
-use RankAICore\Responses\RedirectResponse;
-use RankAICore\Routing\RouteBlueprint;
-use RankAICore\View\ViewInterface;
+use AndreBaseVendors\Pimple\Container;
+use AndreBaseVendors\Psr\Http\Message\ResponseInterface;
+use AndreBaseCore\Requests\RequestInterface;
+use AndreBaseCore\Responses\RedirectResponse;
+use AndreBaseCore\Routing\RouteBlueprint;
+use AndreBaseCore\View\ViewInterface;
 
 /**
  * Can be applied to your App class via a "@mixin" annotation for better IDE support.
@@ -77,7 +77,7 @@ final class ApplicationMixin {
 	 * Get the Application instance.
 	 *
 	 * @codeCoverageIgnore
-	 * @return \RankAICore\Application\Application
+	 * @return \AndreBaseCore\Application\Application
 	 */
 	public static function app() {}
 
@@ -93,7 +93,7 @@ final class ApplicationMixin {
 	 * Get the CSRF service instance.
 	 *
 	 * @codeCoverageIgnore
-	 * @return \RankAICore\Csrf\Csrf
+	 * @return \AndreBaseCore\Csrf\Csrf
 	 */
 	public static function csrf() {}
 
@@ -101,7 +101,7 @@ final class ApplicationMixin {
 	 * Get the Flash service instance.
 	 *
 	 * @codeCoverageIgnore
-	 * @return \RankAICore\Flash\Flash
+	 * @return \AndreBaseCore\Flash\Flash
 	 */
 	public static function flash() {}
 
@@ -109,7 +109,7 @@ final class ApplicationMixin {
 	 * Get the OldInput service instance.
 	 *
 	 * @codeCoverageIgnore
-	 * @return \RankAICore\Input\OldInput
+	 * @return \AndreBaseCore\Input\OldInput
 	 */
 	public static function oldInput() {}
 
@@ -117,7 +117,7 @@ final class ApplicationMixin {
 	 * Run a full middleware + handler pipeline independently of routes.
 	 *
 	 * @codeCoverageIgnore
-	 * @see    \RankAICore\Kernels\HttpKernel::run()
+	 * @see    \AndreBaseCore\Kernels\HttpKernel::run()
 	 * @param  RequestInterface $request
 	 * @param  string[]         $middleware
 	 * @param  string|\Closure  $handler
@@ -130,7 +130,7 @@ final class ApplicationMixin {
 	 * Get the ResponseService instance.
 	 *
 	 * @codeCoverageIgnore
-	 * @return \RankAICore\Responses\ResponseService
+	 * @return \AndreBaseCore\Responses\ResponseService
 	 */
 	public static function responses() {}
 
@@ -138,7 +138,7 @@ final class ApplicationMixin {
 	 * Create a "blank" response.
 	 *
 	 * @codeCoverageIgnore
-	 * @see    \RankAICore\Responses\ResponseService::response()
+	 * @see    \AndreBaseCore\Responses\ResponseService::response()
 	 * @return ResponseInterface
 	 */
 	public static function response() {}
@@ -147,7 +147,7 @@ final class ApplicationMixin {
 	 * Create a response with the specified string as its body.
 	 *
 	 * @codeCoverageIgnore
-	 * @see    \RankAICore\Responses\ResponseService::output()
+	 * @see    \AndreBaseCore\Responses\ResponseService::output()
 	 * @param  string $output
 	 * @return ResponseInterface
 	 */
@@ -157,7 +157,7 @@ final class ApplicationMixin {
 	 * Create a response with the specified data encoded as JSON as its body.
 	 *
 	 * @codeCoverageIgnore
-	 * @see    \RankAICore\Responses\ResponseService::json()
+	 * @see    \AndreBaseCore\Responses\ResponseService::json()
 	 * @param  mixed $data
 	 * @return ResponseInterface
 	 */
@@ -167,7 +167,7 @@ final class ApplicationMixin {
 	 * Create a redirect response.
 	 *
 	 * @codeCoverageIgnore
-	 * @see    \RankAICore\Responses\ResponseService::redirect()
+	 * @see    \AndreBaseCore\Responses\ResponseService::redirect()
 	 * @return RedirectResponse
 	 */
 	public static function redirect() {}
@@ -176,7 +176,7 @@ final class ApplicationMixin {
 	 * Create a response with the specified error status code.
 	 *
 	 * @codeCoverageIgnore
-	 * @see    \RankAICore\Responses\ResponseService::error()
+	 * @see    \AndreBaseCore\Responses\ResponseService::error()
 	 * @param  integer $status
 	 * @return ResponseInterface
 	 */
@@ -186,7 +186,7 @@ final class ApplicationMixin {
 	 * Get the ViewService instance.
 	 *
 	 * @codeCoverageIgnore
-	 * @return \RankAICore\View\ViewService
+	 * @return \AndreBaseCore\View\ViewService
 	 */
 	public static function views() {}
 
@@ -194,7 +194,7 @@ final class ApplicationMixin {
 	 * Create a view.
 	 *
 	 * @codeCoverageIgnore
-	 * @see    \RankAICore\View\ViewService::make()
+	 * @see    \AndreBaseCore\View\ViewService::make()
 	 * @param  string|string[] $views
 	 * @return ViewInterface
 	 */
@@ -204,7 +204,7 @@ final class ApplicationMixin {
 	 * Output child layout content.
 	 *
 	 * @codeCoverageIgnore
-	 * @see    \RankAICore\View\PhpViewEngine::getLayoutContent()
+	 * @see    \AndreBaseCore\View\PhpViewEngine::getLayoutContent()
 	 * @return void
 	 */
 	public static function layoutContent() {}
@@ -221,8 +221,8 @@ final class ApplicationMixin {
 	 * Output the specified view.
 	 *
 	 * @codeCoverageIgnore
-	 * @see    \RankAICore\View\ViewService::make()
-	 * @see    \RankAICore\View\ViewInterface::toString()
+	 * @see    \AndreBaseCore\View\ViewService::make()
+	 * @see    \AndreBaseCore\View\ViewInterface::toString()
 	 * @param  string|string[]      $views
 	 * @param  array<string, mixed> $context
 	 * @return void

@@ -7,7 +7,7 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Routing\Conditions;
+namespace AndreBaseCore\Routing\Conditions;
 
 /**
  * Interface signifying that an object can filter the main WordPress query.

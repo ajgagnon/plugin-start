@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\View;
+namespace AndreBaseCore\View;
 
-use RankAICore\Responses\ResponsableInterface;
+use AndreBaseCore\Responses\ResponsableInterface;
 
 /**
  * Represent and render a view to a string.

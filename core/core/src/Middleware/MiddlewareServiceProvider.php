@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Middleware;
+namespace AndreBaseCore\Middleware;
 
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide middleware dependencies.
@@ -22,15 +22,15 @@ class MiddlewareServiceProvider implements ServiceProviderInterface {
 	 */
 	public function register( $container ) {
 		$container[ UserLoggedOutMiddleware::class ] = function ( $c ) {
-			return new UserLoggedOutMiddleware( $c[ RANKAI_RESPONSE_SERVICE_KEY ] );
+			return new UserLoggedOutMiddleware( $c[ ANDREBASE_RESPONSE_SERVICE_KEY ] );
 		};
 
 		$container[ UserLoggedInMiddleware::class ] = function ( $c ) {
-			return new UserLoggedInMiddleware( $c[ RANKAI_RESPONSE_SERVICE_KEY ] );
+			return new UserLoggedInMiddleware( $c[ ANDREBASE_RESPONSE_SERVICE_KEY ] );
 		};
 
 		$container[ UserCanMiddleware::class ] = function ( $c ) {
-			return new UserCanMiddleware( $c[ RANKAI_RESPONSE_SERVICE_KEY ] );
+			return new UserCanMiddleware( $c[ ANDREBASE_RESPONSE_SERVICE_KEY ] );
 		};
 	}
 

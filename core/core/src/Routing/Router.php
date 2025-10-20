@@ -7,17 +7,17 @@
  * @link      https://surecart
  */
 
-namespace RankAICore\Routing;
+namespace AndreBaseCore\Routing;
 
 use Closure;
-use RankAICore\Exceptions\ConfigurationException;
-use RankAICore\Helpers\Handler;
-use RankAICore\Helpers\HandlerFactory;
-use RankAICore\Requests\RequestInterface;
-use RankAICore\Routing\Conditions\ConditionFactory;
-use RankAICore\Routing\Conditions\ConditionInterface;
-use RankAICore\Routing\Conditions\UrlableInterface;
-use RankAICore\Support\Arr;
+use AndreBaseCore\Exceptions\ConfigurationException;
+use AndreBaseCore\Helpers\Handler;
+use AndreBaseCore\Helpers\HandlerFactory;
+use AndreBaseCore\Requests\RequestInterface;
+use AndreBaseCore\Routing\Conditions\ConditionFactory;
+use AndreBaseCore\Routing\Conditions\ConditionInterface;
+use AndreBaseCore\Routing\Conditions\UrlableInterface;
+use AndreBaseCore\Support\Arr;
 
 /**
  * Provide routing for site requests (i.e. all non-api requests).

@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Helpers;
+namespace AndreBaseCore\Helpers;
 
-use RankAICore\Requests\RequestInterface;
-use RankAICore\Support\Arr;
+use AndreBaseCore\Requests\RequestInterface;
+use AndreBaseCore\Support\Arr;
 
 /**
  * A collection of tools dealing with URLs.

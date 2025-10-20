@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\View;
+namespace AndreBaseCore\View;
 
-use RankAICore\Application\Application;
+use AndreBaseCore\Application\Application;
 
 /**
  * Render view files with different engines depending on their filename
@@ -20,7 +20,7 @@ class NameProxyViewEngine implements ViewEngineInterface {
 	 *
 	 * @var string
 	 */
-	protected $default = RANKAI_VIEW_PHP_VIEW_ENGINE_KEY;
+	protected $default = ANDREBASE_VIEW_PHP_VIEW_ENGINE_KEY;
 
 	/**
 	 * Application.

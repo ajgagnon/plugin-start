@@ -10,13 +10,13 @@
 /**
  * Absolute path to app core's directory
  */
-if ( ! defined( 'RANKAI_APP_CORE_DIR' ) ) {
-	define( 'RANKAI_APP_CORE_DIR', __DIR__ );
+if ( ! defined( 'ANDREBASE_APP_CORE_DIR' ) ) {
+	define( 'ANDREBASE_APP_CORE_DIR', __DIR__ );
 }
 
 /**
  * Absolute path to app core's src directory
  */
-if ( ! defined( 'RANKAI_APP_CORE_SRC_DIR' ) ) {
-	define( 'RANKAI_APP_CORE_SRC_DIR', RANKAI_APP_CORE_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR );
+if ( ! defined( 'ANDREBASE_APP_CORE_SRC_DIR' ) ) {
+	define( 'ANDREBASE_APP_CORE_SRC_DIR', ANDREBASE_APP_CORE_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR );
 }

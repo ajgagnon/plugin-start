@@ -1,9 +1,9 @@
 <?php
 
-namespace RankAI\Middleware;
+namespace AndreBase\Middleware;
 
 use Closure;
-use RankAICore\Requests\RequestInterface;
+use AndreBaseCore\Requests\RequestInterface;
 
 /**
  * Middleware for handling model archiving.
@@ -19,19 +19,19 @@ class AdminPageMiddleware {
 	 */
 	public function handle( RequestInterface $request, Closure $next ) {
 		// Enqueue scripts.
-		$dashboard_asset_file = include trailingslashit( \RankAI\RankAI::core()->assets()->getPath() ) . 'build/index.asset.php';
+		$dashboard_asset_file = include trailingslashit( \AndreBase\AndreBase::core()->assets()->getPath() ) . 'build/index.asset.php';
 		wp_enqueue_script(
-			'rank-ai-admin',
-			trailingslashit( \RankAI\RankAI::core()->assets()->getUrl() ) . 'build/index.js',
+			'andre-base-admin',
+			trailingslashit( \AndreBase\AndreBase::core()->assets()->getUrl() ) . 'build/index.js',
 			$dashboard_asset_file['dependencies'],
 			$dashboard_asset_file['version'],
 			true
 		);
 
-		$dashboard_style_asset_file = include trailingslashit( \RankAI\RankAI::core()->assets()->getPath() ) . 'build/admin.scss.asset.php';
+		$dashboard_style_asset_file = include trailingslashit( \AndreBase\AndreBase::core()->assets()->getPath() ) . 'build/admin.scss.asset.php';
 		wp_enqueue_style(
-			'rank-ai-admin-style',
-			trailingslashit( \RankAI\RankAI::core()->assets()->getUrl() ) . 'build/index.css',
+			'andre-base-admin-style',
+			trailingslashit( \AndreBase\AndreBase::core()->assets()->getUrl() ) . 'build/index.css',
 			$dashboard_style_asset_file['dependencies'],
 			$dashboard_style_asset_file['version']
 		);

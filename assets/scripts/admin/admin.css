@@ -1,6 +1,6 @@
 @import "tailwindcss/theme.css" source("./**/*.{js,jsx,ts,tsx}");
 
-.rank-ai {
+.andre-base {
   position: relative;
   z-index: 0;
   @import "tailwindcss/preflight.css";
@@ -129,6 +129,6 @@
     @apply bg-background text-foreground;
   }
 }
-#wpcontent:has(.rank-ai) {
+#wpcontent:has(.andre-base) {
   padding: 0;
 }

@@ -3,8 +3,8 @@ import Dashboard from "./Dashboard";
 import Settings from "./Settings";
 
 const pages = {
-  "rank-ai": <Dashboard />,
-  "rank-ai-settings": <Settings />,
+  "andre-base": <Dashboard />,
+  "andre-base-settings": <Settings />,
 };
 
 export default function Routes() {

@@ -7,7 +7,7 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Middleware;
+namespace AndreBaseCore\Middleware;
 
 /**
  * Interface for HasControllerMiddlewareTrait.

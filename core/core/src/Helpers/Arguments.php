@@ -7,7 +7,7 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Helpers;
+namespace AndreBaseCore\Helpers;
 
 /**
  * A collection of tools dealing with urls

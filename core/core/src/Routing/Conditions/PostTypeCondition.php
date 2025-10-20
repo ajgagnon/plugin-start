@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Routing\Conditions;
+namespace AndreBaseCore\Routing\Conditions;
 
-use RankAICore\Requests\RequestInterface;
+use AndreBaseCore\Requests\RequestInterface;
 
 /**
  * Check against the current post's type.

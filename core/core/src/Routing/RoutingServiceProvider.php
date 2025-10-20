@@ -7,12 +7,12 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Routing;
+namespace AndreBaseCore\Routing;
 
-use RankAIVendors\Pimple\Container;
-use RankAICore\Routing\Conditions\ConditionFactory;
-use RankAICore\ServiceProviders\ExtendsConfigTrait;
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseVendors\Pimple\Container;
+use AndreBaseCore\Routing\Conditions\ConditionFactory;
+use AndreBaseCore\ServiceProviders\ExtendsConfigTrait;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide routing dependencies
@@ -55,7 +55,7 @@ class RoutingServiceProvider implements ServiceProviderInterface {
 					'attributes'  => [
 						'middleware' => [ 'web' ],
 						'namespace'  => 'App\\Controllers\\Web\\',
-						'handler'    => 'RankAICore\\Controllers\\WordPressController@handle',
+						'handler'    => 'AndreBaseCore\\Controllers\\WordPressController@handle',
 					],
 				],
 				'admin' => [
@@ -76,28 +76,28 @@ class RoutingServiceProvider implements ServiceProviderInterface {
 		);
 
 		/** @var Container $container */
-		$container[ RANKAI_ROUTING_CONDITION_TYPES_KEY ] = static::$condition_types;
+		$container[ ANDREBASE_ROUTING_CONDITION_TYPES_KEY ] = static::$condition_types;
 
-		$container[ RANKAI_ROUTING_ROUTER_KEY ] = function ( $c ) {
+		$container[ ANDREBASE_ROUTING_ROUTER_KEY ] = function ( $c ) {
 			return new Router(
-				$c[ RANKAI_ROUTING_CONDITIONS_CONDITION_FACTORY_KEY ],
-				$c[ RANKAI_HELPERS_HANDLER_FACTORY_KEY ]
+				$c[ ANDREBASE_ROUTING_CONDITIONS_CONDITION_FACTORY_KEY ],
+				$c[ ANDREBASE_HELPERS_HANDLER_FACTORY_KEY ]
 			);
 		};
 
-		$container[ RANKAI_ROUTING_CONDITIONS_CONDITION_FACTORY_KEY ] = function ( $c ) {
-			return new ConditionFactory( $c[ RANKAI_ROUTING_CONDITION_TYPES_KEY ] );
+		$container[ ANDREBASE_ROUTING_CONDITIONS_CONDITION_FACTORY_KEY ] = function ( $c ) {
+			return new ConditionFactory( $c[ ANDREBASE_ROUTING_CONDITION_TYPES_KEY ] );
 		};
 
-		$container[ RANKAI_ROUTING_ROUTE_BLUEPRINT_KEY ] = $container->factory(
+		$container[ ANDREBASE_ROUTING_ROUTE_BLUEPRINT_KEY ] = $container->factory(
 			function ( $c ) {
-				return new RouteBlueprint( $c[ RANKAI_ROUTING_ROUTER_KEY ], $c[ RANKAI_VIEW_SERVICE_KEY ] );
+				return new RouteBlueprint( $c[ ANDREBASE_ROUTING_ROUTER_KEY ], $c[ ANDREBASE_VIEW_SERVICE_KEY ] );
 			}
 		);
 
-		$app = $container[ RANKAI_APPLICATION_KEY ];
-		$app->alias( 'route', RANKAI_ROUTING_ROUTE_BLUEPRINT_KEY );
-		$app->alias( 'routeUrl', RANKAI_ROUTING_ROUTER_KEY, 'getRouteUrl' );
+		$app = $container[ ANDREBASE_APPLICATION_KEY ];
+		$app->alias( 'route', ANDREBASE_ROUTING_ROUTE_BLUEPRINT_KEY );
+		$app->alias( 'routeUrl', ANDREBASE_ROUTING_ROUTER_KEY, 'getRouteUrl' );
 	}
 
 	/**

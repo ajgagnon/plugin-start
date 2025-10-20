@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Requests;
+namespace AndreBaseCore\Requests;
 
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide request dependencies.
@@ -21,7 +21,7 @@ class RequestsServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container[ RANKAI_REQUEST_KEY ] = function () {
+		$container[ ANDREBASE_REQUEST_KEY ] = function () {
 			return Request::fromGlobals();
 		};
 	}

@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Controllers;
+namespace AndreBaseCore\Controllers;
 
 use SureCartCore;
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide controller dependencies
@@ -23,7 +23,7 @@ class ControllersServiceProvider implements ServiceProviderInterface {
 	 */
 	public function register( $container ) {
 		$container[ WordPressController::class ] = function ( $c ) {
-			return new WordPressController( $c[ RANKAI_VIEW_SERVICE_KEY ] );
+			return new WordPressController( $c[ ANDREBASE_VIEW_SERVICE_KEY ] );
 		};
 	}
 

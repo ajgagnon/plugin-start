@@ -7,13 +7,13 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Responses;
+namespace AndreBaseCore\Responses;
 
-use RankAIVendors\Psr\Http\Message\ResponseInterface;
+use AndreBaseVendors\Psr\Http\Message\ResponseInterface;
 
 interface ResponsableInterface {
 	/**
-	 * Convert to RankAIVendors\Psr\Http\Message\ResponseInterface.
+	 * Convert to AndreBaseVendors\Psr\Http\Message\ResponseInterface.
 	 *
 	 * @return ResponseInterface
 	 */

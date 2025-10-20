@@ -7,9 +7,9 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Config;
+namespace AndreBaseAppCore\Config;
 
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide assets dependencies.
@@ -22,7 +22,7 @@ class ConfigServiceProvider implements ServiceProviderInterface {
 	 */
 	public function register( $container ) {
 		$container['surecart_app_core.config.config'] = function ( $c ) {
-			return new Config( $c[ RANKAI_CONFIG_KEY ]['app_core']['path'] );
+			return new Config( $c[ ANDREBASE_CONFIG_KEY ]['app_core']['path'] );
 		};
 	}
 

@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Requests;
+namespace AndreBaseCore\Requests;
 
-use RankAIVendors\GuzzleHttp\Psr7\ServerRequest;
-use RankAICore\Support\Arr;
+use AndreBaseVendors\GuzzleHttp\Psr7\ServerRequest;
+use AndreBaseCore\Support\Arr;
 
 /**
  * A representation of a request to the server.
@@ -21,7 +21,7 @@ class Request extends ServerRequest implements RequestInterface {
 	 * {@inheritDoc}
 	 * @return static
 	 */
-	public static function fromGlobals(): \RankAIVendors\Psr\Http\Message\ServerRequestInterface {
+	public static function fromGlobals(): \AndreBaseVendors\Psr\Http\Message\ServerRequestInterface {
 		$request = parent::fromGlobals();
 		$new     = new self(
 			$request->getMethod(),

@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Middleware;
+namespace AndreBaseCore\Middleware;
 
-use RankAICore\Exceptions\ConfigurationException;
+use AndreBaseCore\Exceptions\ConfigurationException;
 
 /**
  * Provide middleware definitions.

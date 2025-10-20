@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Csrf;
+namespace AndreBaseCore\Csrf;
 
-use RankAICore\Requests\RequestInterface;
+use AndreBaseCore\Requests\RequestInterface;
 
 /**
  * Provide CSRF protection utilities through WordPress nonces.

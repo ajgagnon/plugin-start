@@ -7,9 +7,9 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Concerns;
+namespace AndreBaseAppCore\Concerns;
 
-use RankAICore\Support\Arr;
+use AndreBaseCore\Support\Arr;
 
 trait ReadsJsonTrait {
 	/**

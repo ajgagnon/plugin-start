@@ -7,12 +7,12 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Flash;
+namespace AndreBaseCore\Flash;
 
 use ArrayAccess;
-use RankAICore\Exceptions\ConfigurationException;
-use RankAICore\Helpers\MixedType;
-use RankAICore\Support\Arr;
+use AndreBaseCore\Exceptions\ConfigurationException;
+use AndreBaseCore\Helpers\MixedType;
+use AndreBaseCore\Support\Arr;
 
 /**
  * Provide a way to flash data into the session for the next request.

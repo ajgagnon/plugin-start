@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Middleware;
+namespace AndreBaseCore\Middleware;
 
-use RankAICore\Helpers\Handler;
+use AndreBaseCore\Helpers\Handler;
 
 /**
  * Describes how a request is handled.

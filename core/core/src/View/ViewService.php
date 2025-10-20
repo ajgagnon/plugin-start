@@ -7,12 +7,12 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\View;
+namespace AndreBaseCore\View;
 
 use Closure;
-use RankAICore\Helpers\Handler;
-use RankAICore\Helpers\HandlerFactory;
-use RankAICore\Helpers\MixedType;
+use AndreBaseCore\Helpers\Handler;
+use AndreBaseCore\Helpers\HandlerFactory;
+use AndreBaseCore\Helpers\MixedType;
 
 /**
  * Provide general view-related functionality.

@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Csrf;
+namespace AndreBaseCore\Csrf;
 
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide CSRF dependencies.
@@ -21,16 +21,16 @@ class CsrfServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container[ RANKAI_CSRF_KEY ] = function () {
+		$container[ ANDREBASE_CSRF_KEY ] = function () {
 			return new Csrf();
 		};
 
 		$container[ CsrfMiddleware::class ] = function ( $c ) {
-			return new CsrfMiddleware( $c[ RANKAI_CSRF_KEY ] );
+			return new CsrfMiddleware( $c[ ANDREBASE_CSRF_KEY ] );
 		};
 
-		$app = $container[ RANKAI_APPLICATION_KEY ];
-		$app->alias( 'csrf', RANKAI_CSRF_KEY );
+		$app = $container[ ANDREBASE_APPLICATION_KEY ];
+		$app->alias( 'csrf', ANDREBASE_CSRF_KEY );
 	}
 
 	/**

@@ -7,7 +7,7 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Exceptions;
+namespace AndreBaseCore\Exceptions;
 
 class ClassNotFoundException extends ConfigurationException {
 

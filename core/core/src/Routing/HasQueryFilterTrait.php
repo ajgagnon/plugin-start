@@ -7,11 +7,11 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Routing;
+namespace AndreBaseCore\Routing;
 
-use RankAICore\Exceptions\ConfigurationException;
-use RankAICore\Requests\RequestInterface;
-use RankAICore\Routing\Conditions\CanFilterQueryInterface;
+use AndreBaseCore\Exceptions\ConfigurationException;
+use AndreBaseCore\Requests\RequestInterface;
+use AndreBaseCore\Routing\Conditions\CanFilterQueryInterface;
 
 /**
  * Represent an object which has a WordPress query filter attribute.

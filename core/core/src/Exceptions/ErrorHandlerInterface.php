@@ -7,11 +7,11 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Exceptions;
+namespace AndreBaseCore\Exceptions;
 
 use Exception as PhpException;
-use RankAIVendors\Psr\Http\Message\ResponseInterface;
-use RankAICore\Requests\RequestInterface;
+use AndreBaseVendors\Psr\Http\Message\ResponseInterface;
+use AndreBaseCore\Requests\RequestInterface;
 
 interface ErrorHandlerInterface {
 	/**

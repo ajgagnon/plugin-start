@@ -7,16 +7,16 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Exceptions;
+namespace AndreBaseCore\Exceptions;
 
 use Exception as PhpException;
-use RankAIVendors\Psr\Http\Message\ResponseInterface;
+use AndreBaseVendors\Psr\Http\Message\ResponseInterface;
 use Whoops\RunInterface;
-use RankAICore\Csrf\InvalidCsrfTokenException;
-use RankAICore\Requests\RequestInterface;
-use RankAICore\Responses\ResponseService;
-use RankAICore\Routing\NotFoundException;
-use RankAICore\Support\Arr;
+use AndreBaseCore\Csrf\InvalidCsrfTokenException;
+use AndreBaseCore\Requests\RequestInterface;
+use AndreBaseCore\Responses\ResponseService;
+use AndreBaseCore\Routing\NotFoundException;
+use AndreBaseCore\Support\Arr;
 
 class ErrorHandler implements ErrorHandlerInterface {
 	/**
@@ -156,7 +156,7 @@ class ErrorHandler implements ErrorHandlerInterface {
 			return $response;
 		}
 
-		if ( ! defined( 'RANKAI_TEST_DIR' ) ) {
+		if ( ! defined( 'ANDREBASE_TEST_DIR' ) ) {
 			// Only log errors if we are not running the WP Emerge test suite.
 			error_log( $exception );
 		}

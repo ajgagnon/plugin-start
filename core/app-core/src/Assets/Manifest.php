@@ -7,11 +7,11 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Assets;
+namespace AndreBaseAppCore\Assets;
 
-use RankAICore\Helpers\MixedType;
-use RankAIAppCore\Concerns\JsonFileNotFoundException;
-use RankAIAppCore\Concerns\ReadsJsonTrait;
+use AndreBaseCore\Helpers\MixedType;
+use AndreBaseAppCore\Concerns\JsonFileNotFoundException;
+use AndreBaseAppCore\Concerns\ReadsJsonTrait;
 
 class Manifest {
 	use ReadsJsonTrait {

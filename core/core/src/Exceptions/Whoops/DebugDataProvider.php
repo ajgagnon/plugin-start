@@ -1,8 +1,8 @@
 <?php
 
-namespace RankAICore\Exceptions\Whoops;
+namespace AndreBaseCore\Exceptions\Whoops;
 
-use RankAIVendors\Pimple\Container;
+use AndreBaseVendors\Pimple\Container;
 
 /**
  * Provide debug data for usage with \Whoops\Handler\PrettyPageHandler.
@@ -49,8 +49,8 @@ class DebugDataProvider {
 	 * @return array<string, mixed>
 	 */
 	public function route( $inspector ) {
-		/** @var \RankAICore\Routing\RouteInterface|null $route */
-		$route = $this->container[ RANKAI_ROUTING_ROUTER_KEY ]->getCurrentRoute();
+		/** @var \AndreBaseCore\Routing\RouteInterface|null $route */
+		$route = $this->container[ ANDREBASE_ROUTING_ROUTER_KEY ]->getCurrentRoute();
 
 		if ( ! $route ) {
 			return [];

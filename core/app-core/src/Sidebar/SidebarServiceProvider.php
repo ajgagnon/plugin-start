@@ -7,9 +7,9 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Sidebar;
+namespace AndreBaseAppCore\Sidebar;
 
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide sidebar dependencies.

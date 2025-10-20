@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Input;
+namespace AndreBaseCore\Input;
 
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide old input dependencies.
@@ -21,16 +21,16 @@ class OldInputServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container[ RANKAI_OLD_INPUT_KEY ] = function ( $c ) {
-			return new OldInput( $c[ RANKAI_FLASH_KEY ] );
+		$container[ ANDREBASE_OLD_INPUT_KEY ] = function ( $c ) {
+			return new OldInput( $c[ ANDREBASE_FLASH_KEY ] );
 		};
 
 		$container[ OldInputMiddleware::class ] = function ( $c ) {
-			return new OldInputMiddleware( $c[ RANKAI_OLD_INPUT_KEY ] );
+			return new OldInputMiddleware( $c[ ANDREBASE_OLD_INPUT_KEY ] );
 		};
 
-		$app = $container[ RANKAI_APPLICATION_KEY ];
-		$app->alias( 'oldInput', RANKAI_OLD_INPUT_KEY );
+		$app = $container[ ANDREBASE_APPLICATION_KEY ];
+		$app->alias( 'oldInput', ANDREBASE_OLD_INPUT_KEY );
 	}
 
 	/**

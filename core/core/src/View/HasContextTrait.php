@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\View;
+namespace AndreBaseCore\View;
 
-use RankAICore\Support\Arr;
+use AndreBaseCore\Support\Arr;
 
 trait HasContextTrait {
 	/**

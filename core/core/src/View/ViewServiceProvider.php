@@ -7,12 +7,12 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\View;
+namespace AndreBaseCore\View;
 
-use RankAIVendors\Pimple\Container;
-use RankAICore\Helpers\MixedType;
-use RankAICore\ServiceProviders\ExtendsConfigTrait;
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseVendors\Pimple\Container;
+use AndreBaseCore\Helpers\MixedType;
+use AndreBaseCore\ServiceProviders\ExtendsConfigTrait;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide view dependencies
@@ -37,33 +37,33 @@ class ViewServiceProvider implements ServiceProviderInterface {
 			]
 		);
 
-		$container[ RANKAI_VIEW_SERVICE_KEY ] = function ( $c ) {
+		$container[ ANDREBASE_VIEW_SERVICE_KEY ] = function ( $c ) {
 			return new ViewService(
-				$c[ RANKAI_CONFIG_KEY ]['view_composers'],
-				$c[ RANKAI_VIEW_ENGINE_KEY ],
-				$c[ RANKAI_HELPERS_HANDLER_FACTORY_KEY ]
+				$c[ ANDREBASE_CONFIG_KEY ]['view_composers'],
+				$c[ ANDREBASE_VIEW_ENGINE_KEY ],
+				$c[ ANDREBASE_HELPERS_HANDLER_FACTORY_KEY ]
 			);
 		};
 
-		$container[ RANKAI_VIEW_COMPOSE_ACTION_KEY ] = function ( $c ) {
+		$container[ ANDREBASE_VIEW_COMPOSE_ACTION_KEY ] = function ( $c ) {
 			return function ( ViewInterface $view ) use ( $c ) {
-				$view_service = $c[ RANKAI_VIEW_SERVICE_KEY ];
+				$view_service = $c[ ANDREBASE_VIEW_SERVICE_KEY ];
 				$view_service->compose( $view );
 				return $view;
 			};
 		};
 
-		$container[ RANKAI_VIEW_PHP_VIEW_ENGINE_KEY ] = function ( $c ) {
-			$finder = new PhpViewFilesystemFinder( MixedType::toArray( $c[ RANKAI_CONFIG_KEY ]['views'] ) );
-			return new PhpViewEngine( $c[ RANKAI_VIEW_COMPOSE_ACTION_KEY ], $finder );
+		$container[ ANDREBASE_VIEW_PHP_VIEW_ENGINE_KEY ] = function ( $c ) {
+			$finder = new PhpViewFilesystemFinder( MixedType::toArray( $c[ ANDREBASE_CONFIG_KEY ]['views'] ) );
+			return new PhpViewEngine( $c[ ANDREBASE_VIEW_COMPOSE_ACTION_KEY ], $finder );
 		};
 
-		$container[ RANKAI_VIEW_ENGINE_KEY ] = function ( $c ) {
-			return $c[ RANKAI_VIEW_PHP_VIEW_ENGINE_KEY ];
+		$container[ ANDREBASE_VIEW_ENGINE_KEY ] = function ( $c ) {
+			return $c[ ANDREBASE_VIEW_PHP_VIEW_ENGINE_KEY ];
 		};
 
-		$app = $container[ RANKAI_APPLICATION_KEY ];
-		$app->alias( 'views', RANKAI_VIEW_SERVICE_KEY );
+		$app = $container[ ANDREBASE_APPLICATION_KEY ];
+		$app->alias( 'views', ANDREBASE_VIEW_SERVICE_KEY );
 
 		$app->alias(
 			'view',
@@ -83,7 +83,7 @@ class ViewServiceProvider implements ServiceProviderInterface {
 			'layoutContent',
 			function () use ( $app ) {
 				/** @var PhpViewEngine $engine */
-				$engine = $app->resolve( RANKAI_VIEW_PHP_VIEW_ENGINE_KEY );
+				$engine = $app->resolve( ANDREBASE_VIEW_PHP_VIEW_ENGINE_KEY );
 
 				echo $engine->getLayoutContent();
 			}

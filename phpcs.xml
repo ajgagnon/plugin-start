@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="RankAI">
+<ruleset name="AndreBase">
 	<description>Plugin Coding Standard</description>
 
 	<!-- <exclude-pattern>app/src</exclude-pattern> -->

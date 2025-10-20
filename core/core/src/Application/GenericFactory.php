@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Application;
+namespace AndreBaseCore\Application;
 
-use RankAIVendors\Pimple\Container;
-use RankAICore\Exceptions\ClassNotFoundException;
+use AndreBaseVendors\Pimple\Container;
+use AndreBaseCore\Exceptions\ClassNotFoundException;
 
 /**
  * Generic class instance factory.

@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Application;
+namespace AndreBaseCore\Application;
 
 use BadMethodCallException;
-use RankAICore\Exceptions\ConfigurationException;
+use AndreBaseCore\Exceptions\ConfigurationException;
 
 /**
  * Provides static access to an Application instance.

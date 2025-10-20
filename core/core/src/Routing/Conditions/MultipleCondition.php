@@ -7,9 +7,9 @@
  * @link      https://surecart
  */
 
-namespace RankAICore\Routing\Conditions;
+namespace AndreBaseCore\Routing\Conditions;
 
-use RankAICore\Requests\RequestInterface;
+use AndreBaseCore\Requests\RequestInterface;
 
 /**
  * Check against an array of conditions in an AND logical relationship.

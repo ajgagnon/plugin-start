@@ -7,10 +7,10 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\AppCore;
+namespace AndreBaseAppCore\AppCore;
 
-use RankAICore\ServiceProviders\ExtendsConfigTrait;
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ExtendsConfigTrait;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide theme dependencies.
@@ -33,12 +33,12 @@ class AppCoreServiceProvider implements ServiceProviderInterface {
 			]
 		);
 
-		$container['RANKAI_app_core.app_core.app_core'] = function ( $c ) {
-			return new AppCore( $c[ RANKAI_APPLICATION_KEY ] );
+		$container['ANDREBASE_app_core.app_core.app_core'] = function ( $c ) {
+			return new AppCore( $c[ ANDREBASE_APPLICATION_KEY ] );
 		};
 
-		$app = $container[ RANKAI_APPLICATION_KEY ];
-		$app->alias( 'core', 'RANKAI_app_core.app_core.app_core' );
+		$app = $container[ ANDREBASE_APPLICATION_KEY ];
+		$app->alias( 'core', 'ANDREBASE_app_core.app_core.app_core' );
 	}
 
 	/**

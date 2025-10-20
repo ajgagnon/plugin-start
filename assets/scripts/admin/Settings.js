@@ -17,7 +17,7 @@ import {
 
 export default function Page() {
   return (
-    <div className="rank-ai">
+    <div className="andre-base">
       <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4 bg-background z-10">
         Settings
       </header>

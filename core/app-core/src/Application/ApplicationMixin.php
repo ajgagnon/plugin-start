@@ -7,9 +7,9 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Application;
+namespace AndreBaseAppCore\Application;
 
-use RankAIAppCore\AppCore\AppCore;
+use AndreBaseAppCore\AppCore\AppCore;
 
 /**
  * Can be applied to your App class via a "@mixin" annotation for better IDE support.

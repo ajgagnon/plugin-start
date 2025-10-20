@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Kernels;
+namespace AndreBaseCore\Kernels;
 
-use RankAICore\ServiceProviders\ExtendsConfigTrait;
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ExtendsConfigTrait;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide old input dependencies.
@@ -28,12 +28,12 @@ class KernelsServiceProvider implements ServiceProviderInterface {
 			$container,
 			'middleware',
 			[
-				'flash'           => \RankAICore\Flash\FlashMiddleware::class,
-				'old_input'       => \RankAICore\Input\OldInputMiddleware::class,
-				'csrf'            => \RankAICore\Csrf\CsrfMiddleware::class,
-				'user.logged_in'  => \RankAICore\Middleware\UserLoggedInMiddleware::class,
-				'user.logged_out' => \RankAICore\Middleware\UserLoggedOutMiddleware::class,
-				'user.can'        => \RankAICore\Middleware\UserCanMiddleware::class,
+				'flash'           => \AndreBaseCore\Flash\FlashMiddleware::class,
+				'old_input'       => \AndreBaseCore\Input\OldInputMiddleware::class,
+				'csrf'            => \AndreBaseCore\Csrf\CsrfMiddleware::class,
+				'user.logged_in'  => \AndreBaseCore\Middleware\UserLoggedInMiddleware::class,
+				'user.logged_out' => \AndreBaseCore\Middleware\UserLoggedOutMiddleware::class,
+				'user.can'        => \AndreBaseCore\Middleware\UserCanMiddleware::class,
 			]
 		);
 
@@ -54,31 +54,31 @@ class KernelsServiceProvider implements ServiceProviderInterface {
 
 		$this->extendConfig( $container, 'middleware_priority', [] );
 
-		$container[ RANKAI_WORDPRESS_HTTP_KERNEL_KEY ] = function ( $c ) {
+		$container[ ANDREBASE_WORDPRESS_HTTP_KERNEL_KEY ] = function ( $c ) {
 			$kernel = new HttpKernel(
 				$c,
-				$c[ RANKAI_APPLICATION_GENERIC_FACTORY_KEY ],
-				$c[ RANKAI_HELPERS_HANDLER_FACTORY_KEY ],
-				$c[ RANKAI_RESPONSE_SERVICE_KEY ],
-				$c[ RANKAI_REQUEST_KEY ],
-				$c[ RANKAI_ROUTING_ROUTER_KEY ],
-				$c[ RANKAI_VIEW_SERVICE_KEY ],
-				$c[ RANKAI_EXCEPTIONS_ERROR_HANDLER_KEY ]
+				$c[ ANDREBASE_APPLICATION_GENERIC_FACTORY_KEY ],
+				$c[ ANDREBASE_HELPERS_HANDLER_FACTORY_KEY ],
+				$c[ ANDREBASE_RESPONSE_SERVICE_KEY ],
+				$c[ ANDREBASE_REQUEST_KEY ],
+				$c[ ANDREBASE_ROUTING_ROUTER_KEY ],
+				$c[ ANDREBASE_VIEW_SERVICE_KEY ],
+				$c[ ANDREBASE_EXCEPTIONS_ERROR_HANDLER_KEY ]
 			);
 
-			$kernel->setMiddleware( $c[ RANKAI_CONFIG_KEY ]['middleware'] );
-			$kernel->setMiddlewareGroups( $c[ RANKAI_CONFIG_KEY ]['middleware_groups'] );
-			$kernel->setMiddlewarePriority( $c[ RANKAI_CONFIG_KEY ]['middleware_priority'] );
+			$kernel->setMiddleware( $c[ ANDREBASE_CONFIG_KEY ]['middleware'] );
+			$kernel->setMiddlewareGroups( $c[ ANDREBASE_CONFIG_KEY ]['middleware_groups'] );
+			$kernel->setMiddlewarePriority( $c[ ANDREBASE_CONFIG_KEY ]['middleware_priority'] );
 
 			return $kernel;
 		};
 
-		$app = $container[ RANKAI_APPLICATION_KEY ];
+		$app = $container[ ANDREBASE_APPLICATION_KEY ];
 
 		$app->alias(
 			'run',
 			function () use ( $app ) {
-				$kernel = $app->resolve( RANKAI_WORDPRESS_HTTP_KERNEL_KEY );
+				$kernel = $app->resolve( ANDREBASE_WORDPRESS_HTTP_KERNEL_KEY );
 				return call_user_func_array( [ $kernel, 'run' ], func_get_args() );
 			}
 		);

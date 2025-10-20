@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\View;
+namespace AndreBaseCore\View;
 
-use RankAICore\Exceptions\Exception;
+use AndreBaseCore\Exceptions\Exception;
 
 class ViewNotFoundException extends Exception {
 

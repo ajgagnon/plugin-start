@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Helpers;
+namespace AndreBaseCore\Helpers;
 
-use RankAICore\Support\Arr;
+use AndreBaseCore\Support\Arr;
 
 /**
  * Represent an object which has an array of attributes.

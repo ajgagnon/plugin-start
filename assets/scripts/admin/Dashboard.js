@@ -89,7 +89,7 @@ export default function Page() {
   };
 
   return (
-    <div className="rank-ai">
+    <div className="andre-base">
       <SidebarProvider>
         <AppSidebar onNavigate={setCurrentPage} currentPage={currentPage} />
         <SidebarInset>

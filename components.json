@@ -11,7 +11,7 @@
         "css": "./assets/scripts/admin/admin.css",
         "baseColor": "neutral",
         "cssVariables": true,
-        "important": ".ghost-climb",
+        "important": ".andre-base",
         "prefix": "",
         "preflight": false
     },

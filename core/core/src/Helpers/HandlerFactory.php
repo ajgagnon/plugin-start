@@ -7,10 +7,10 @@
  * @link      https://surecart
  */
 
-namespace RankAICore\Helpers;
+namespace AndreBaseCore\Helpers;
 
 use Closure;
-use RankAICore\Application\GenericFactory;
+use AndreBaseCore\Application\GenericFactory;
 
 /**
  * Handler factory.

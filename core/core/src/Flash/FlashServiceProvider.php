@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Flash;
+namespace AndreBaseCore\Flash;
 
-use RankAICore\ServiceProviders\ServiceProviderInterface;
-use RankAICore\Session\Session;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\Session\Session;
 
 /**
  * Provide flash dependencies.
@@ -25,10 +25,10 @@ class FlashServiceProvider implements ServiceProviderInterface {
 		global $sc_session;
 		$sc_session = [];
 
-		$container[ RANKAI_FLASH_KEY ] = function ( $c ) use ( $sc_session ) {
+		$container[ ANDREBASE_FLASH_KEY ] = function ( $c ) use ( $sc_session ) {
 			$session = null;
-			if ( isset( $c[ RANKAI_SESSION_KEY ] ) ) {
-				$session = &$c[ RANKAI_SESSION_KEY ];
+			if ( isset( $c[ ANDREBASE_SESSION_KEY ] ) ) {
+				$session = &$c[ ANDREBASE_SESSION_KEY ];
 			} else {
 				$session = &$sc_session;
 			}
@@ -36,11 +36,11 @@ class FlashServiceProvider implements ServiceProviderInterface {
 		};
 
 		$container[ FlashMiddleware::class ] = function ( $c ) {
-			return new FlashMiddleware( $c[ RANKAI_FLASH_KEY ] );
+			return new FlashMiddleware( $c[ ANDREBASE_FLASH_KEY ] );
 		};
 
-		$app = $container[ RANKAI_APPLICATION_KEY ];
-		$app->alias( 'flash', RANKAI_FLASH_KEY );
+		$app = $container[ ANDREBASE_APPLICATION_KEY ];
+		$app->alias( 'flash', ANDREBASE_FLASH_KEY );
 	}
 
 	/**

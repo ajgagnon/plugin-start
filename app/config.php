@@ -4,7 +4,7 @@
  *
  * @link https://docs.wpemerge.com/#/framework/configuration
  *
- * @package RankAI
+ * @package AndreBase
  */
 
 return array(
@@ -12,10 +12,10 @@ return array(
 	 * Array of service providers you wish to enable.
 	 */
 	'providers'              => array(
-		\RankAIAppCore\AppCore\AppCoreServiceProvider::class,
-		\RankAIAppCore\Config\ConfigServiceProvider::class,
-		\RankAIAppCore\Assets\AssetsServiceProvider::class,
-		\RankAI\Admin\AdminServiceProvider::class,
+		\AndreBaseAppCore\AppCore\AppCoreServiceProvider::class,
+		\AndreBaseAppCore\Config\ConfigServiceProvider::class,
+		\AndreBaseAppCore\Assets\AssetsServiceProvider::class,
+		\AndreBase\Admin\AdminServiceProvider::class,
 	),
 
 	/**
@@ -34,13 +34,13 @@ return array(
 		'web'   => array(
 			'definitions' => __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'web.php',
 			'attributes'  => array(
-				'namespace' => 'RankAI\\Controllers\\Web\\',
+				'namespace' => 'AndreBase\\Controllers\\Web\\',
 			),
 		),
 		'admin' => array(
 			'definitions' => __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'admin.php',
 			'attributes'  => array(
-				'namespace' => 'RankAI\\Controllers\\Admin\\',
+				'namespace' => 'AndreBase\\Controllers\\Admin\\',
 			),
 		),
 		'ajax'  => array(
@@ -64,7 +64,7 @@ return array(
 	 * - 'user.can'
 	 */
 	'middleware'             => array(
-		'admin.page' => \RankAI\Middleware\AdminPageMiddleware::class,
+		'admin.page' => \AndreBase\Middleware\AdminPageMiddleware::class,
 	),
 
 	/**
@@ -105,6 +105,6 @@ return array(
 	 */
 	'app_core'               => array(
 		'path' => dirname( __DIR__ ),
-		'url'  => plugin_dir_url( RANKAI_PLUGIN_FILE ),
+		'url'  => plugin_dir_url( ANDREBASE_PLUGIN_FILE ),
 	),
 );

@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Routing;
+namespace AndreBaseCore\Routing;
 
-use RankAICore\Exceptions\Exception;
+use AndreBaseCore\Exceptions\Exception;
 
 class NotFoundException extends Exception {
 

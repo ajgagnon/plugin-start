@@ -7,11 +7,11 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Csrf;
+namespace AndreBaseCore\Csrf;
 
 use Closure;
-use RankAIVendors\Psr\Http\Message\ResponseInterface;
-use RankAICore\Requests\RequestInterface;
+use AndreBaseVendors\Psr\Http\Message\ResponseInterface;
+use AndreBaseCore\Requests\RequestInterface;
 
 /**
  * Store current request data and clear old request data

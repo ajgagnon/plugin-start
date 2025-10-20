@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Routing;
+namespace AndreBaseCore\Routing;
 
-use RankAICore\Helpers\HasAttributesInterface;
-use RankAICore\Requests\RequestInterface;
+use AndreBaseCore\Helpers\HasAttributesInterface;
+use AndreBaseCore\Requests\RequestInterface;
 
 /**
  * Interface that routes must implement

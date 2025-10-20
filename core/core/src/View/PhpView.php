@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\View;
+namespace AndreBaseCore\View;
 
-use RankAIVendors\GuzzleHttp\Psr7\Utils as Psr7Utils;
-use RankAIVendors\GuzzleHttp\Psr7\Response;
+use AndreBaseVendors\GuzzleHttp\Psr7\Utils as Psr7Utils;
+use AndreBaseVendors\GuzzleHttp\Psr7\Response;
 
 /**
  * Render a view file with php.

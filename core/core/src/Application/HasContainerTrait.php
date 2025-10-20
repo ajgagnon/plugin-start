@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Application;
+namespace AndreBaseCore\Application;
 
-use RankAIVendors\Pimple\Container;
+use AndreBaseVendors\Pimple\Container;
 
 /**
  * Holds an IoC container.

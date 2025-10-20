@@ -7,11 +7,11 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Application;
+namespace AndreBaseCore\Application;
 
 use Closure;
 use BadMethodCallException;
-use RankAICore\Support\Arr;
+use AndreBaseCore\Support\Arr;
 
 /**
  * Add methods to classes at runtime.

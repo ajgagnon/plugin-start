@@ -7,9 +7,9 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\AppCore;
+namespace AndreBaseAppCore\AppCore;
 
-use RankAICore\Application\Application;
+use AndreBaseCore\Application\Application;
 
 /**
  * Main communication channel with the theme.
@@ -32,45 +32,45 @@ class AppCore {
 	}
 
 	/**
-	 * Shortcut to \RankAIAppCore\Assets\Assets.
+	 * Shortcut to \AndreBaseAppCore\Assets\Assets.
 	 *
-	 * @return \RankAIAppCore\Assets\Assets
+	 * @return \AndreBaseAppCore\Assets\Assets
 	 */
 	public function assets() {
 		return $this->app->resolve( 'surecart_app_core.assets.assets' );
 	}
 
 	/**
-	 * Shortcut to \RankAIAppCore\Avatar\Avatar.
+	 * Shortcut to \AndreBaseAppCore\Avatar\Avatar.
 	 *
-	 * @return \RankAIAppCore\Avatar\Avatar
+	 * @return \AndreBaseAppCore\Avatar\Avatar
 	 */
 	public function avatar() {
 		return $this->app->resolve( 'surecart_app_core.avatar.avatar' );
 	}
 
 	/**
-	 * Shortcut to \RankAIAppCore\Config\Config.
+	 * Shortcut to \AndreBaseAppCore\Config\Config.
 	 *
-	 * @return \RankAIAppCore\Config\Config
+	 * @return \AndreBaseAppCore\Config\Config
 	 */
 	public function config() {
 		return $this->app->resolve( 'surecart_app_core.config.config' );
 	}
 
 	/**
-	 * Shortcut to \RankAIAppCore\Image\Image.
+	 * Shortcut to \AndreBaseAppCore\Image\Image.
 	 *
-	 * @return \RankAIAppCore\Image\Image
+	 * @return \AndreBaseAppCore\Image\Image
 	 */
 	public function image() {
 		return $this->app->resolve( 'surecart_app_core.image.image' );
 	}
 
 	/**
-	 * Shortcut to \RankAIAppCore\Sidebar\Sidebar.
+	 * Shortcut to \AndreBaseAppCore\Sidebar\Sidebar.
 	 *
-	 * @return \RankAIAppCore\Sidebar\Sidebar
+	 * @return \AndreBaseAppCore\Sidebar\Sidebar
 	 */
 	public function sidebar() {
 		return $this->app->resolve( 'surecart_app_core.sidebar.sidebar' );

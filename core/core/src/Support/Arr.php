@@ -1,6 +1,6 @@
 <?php /** @noinspection ALL */
 
-namespace RankAICore\Support;
+namespace AndreBaseCore\Support;
 
 use ArrayAccess;
 

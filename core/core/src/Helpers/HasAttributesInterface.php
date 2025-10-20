@@ -7,7 +7,7 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Helpers;
+namespace AndreBaseCore\Helpers;
 
 /**
  * Represent an object which has an array of attributes.

@@ -7,12 +7,12 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Application;
+namespace AndreBaseCore\Application;
 
-use RankAICore\Helpers\HandlerFactory;
-use RankAICore\Helpers\MixedType;
-use RankAICore\ServiceProviders\ExtendsConfigTrait;
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\Helpers\HandlerFactory;
+use AndreBaseCore\Helpers\MixedType;
+use AndreBaseCore\ServiceProviders\ExtendsConfigTrait;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide application dependencies.
@@ -38,28 +38,28 @@ class ApplicationServiceProvider implements ServiceProviderInterface {
 			]
 		);
 
-		$container[ RANKAI_APPLICATION_GENERIC_FACTORY_KEY ] = function ( $c ) {
+		$container[ ANDREBASE_APPLICATION_GENERIC_FACTORY_KEY ] = function ( $c ) {
 			return new GenericFactory( $c );
 		};
 
-		$container[ RANKAI_APPLICATION_CLOSURE_FACTORY_KEY ] = function ( $c ) {
-			return new ClosureFactory( $c[ RANKAI_APPLICATION_GENERIC_FACTORY_KEY ] );
+		$container[ ANDREBASE_APPLICATION_CLOSURE_FACTORY_KEY ] = function ( $c ) {
+			return new ClosureFactory( $c[ ANDREBASE_APPLICATION_GENERIC_FACTORY_KEY ] );
 		};
 
-		$container[ RANKAI_HELPERS_HANDLER_FACTORY_KEY ] = function ( $c ) {
-			return new HandlerFactory( $c[ RANKAI_APPLICATION_GENERIC_FACTORY_KEY ] );
+		$container[ ANDREBASE_HELPERS_HANDLER_FACTORY_KEY ] = function ( $c ) {
+			return new HandlerFactory( $c[ ANDREBASE_APPLICATION_GENERIC_FACTORY_KEY ] );
 		};
 
-		$app = $container[ RANKAI_APPLICATION_KEY ];
-		$app->alias( 'app', RANKAI_APPLICATION_KEY );
-		$app->alias( 'closure', RANKAI_APPLICATION_CLOSURE_FACTORY_KEY );
+		$app = $container[ ANDREBASE_APPLICATION_KEY ];
+		$app->alias( 'app', ANDREBASE_APPLICATION_KEY );
+		$app->alias( 'closure', ANDREBASE_APPLICATION_CLOSURE_FACTORY_KEY );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function bootstrap( $container ) {
-		$cache_dir = $container[ RANKAI_CONFIG_KEY ]['cache']['path'];
+		$cache_dir = $container[ ANDREBASE_CONFIG_KEY ]['cache']['path'];
 		wp_mkdir_p( $cache_dir );
 	}
 }

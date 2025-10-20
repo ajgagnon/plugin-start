@@ -7,11 +7,11 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Middleware;
+namespace AndreBaseCore\Middleware;
 
 use Closure;
-use RankAICore\Requests\RequestInterface;
-use RankAICore\Responses\ResponseService;
+use AndreBaseCore\Requests\RequestInterface;
+use AndreBaseCore\Responses\ResponseService;
 
 /**
  * Redirect logged in users to a specific URL.

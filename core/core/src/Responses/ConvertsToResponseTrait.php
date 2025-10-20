@@ -7,7 +7,7 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Responses;
+namespace AndreBaseCore\Responses;
 
 /**
  * Converts values to a response.

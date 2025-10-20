@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Requests;
+namespace AndreBaseCore\Requests;
 
-use RankAIVendors\Psr\Http\Message\ServerRequestInterface;
+use AndreBaseVendors\Psr\Http\Message\ServerRequestInterface;
 
 /**
  * A representation of a request to the server.

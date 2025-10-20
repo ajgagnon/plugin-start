@@ -7,10 +7,10 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Config;
+namespace AndreBaseAppCore\Config;
 
-use RankAICore\Helpers\MixedType;
-use RankAIAppCore\Concerns\ReadsJsonTrait;
+use AndreBaseCore\Helpers\MixedType;
+use AndreBaseAppCore\Concerns\ReadsJsonTrait;
 
 class Config {
 	use ReadsJsonTrait {

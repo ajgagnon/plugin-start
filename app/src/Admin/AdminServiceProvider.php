@@ -1,8 +1,8 @@
 <?php
 
-namespace RankAI\Admin;
+namespace AndreBase\Admin;
 
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Register plugin options.

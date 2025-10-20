@@ -7,23 +7,23 @@
  * @link      https://surecart
  */
 
-namespace RankAICore\Application;
+namespace AndreBaseCore\Application;
 
-use RankAIVendors\Pimple\Container;
-use RankAICore\Controllers\ControllersServiceProvider;
-use RankAICore\Csrf\CsrfServiceProvider;
-use RankAICore\Exceptions\ConfigurationException;
-use RankAICore\Exceptions\ExceptionsServiceProvider;
-use RankAICore\Flash\FlashServiceProvider;
-use RankAICore\Input\OldInputServiceProvider;
-use RankAICore\Kernels\KernelsServiceProvider;
-use RankAICore\Middleware\MiddlewareServiceProvider;
-use RankAICore\Requests\RequestsServiceProvider;
-use RankAICore\Responses\ResponsesServiceProvider;
-use RankAICore\Routing\RoutingServiceProvider;
-use RankAICore\ServiceProviders\ServiceProviderInterface;
-use RankAICore\Support\Arr;
-use RankAICore\View\ViewServiceProvider;
+use AndreBaseVendors\Pimple\Container;
+use AndreBaseCore\Controllers\ControllersServiceProvider;
+use AndreBaseCore\Csrf\CsrfServiceProvider;
+use AndreBaseCore\Exceptions\ConfigurationException;
+use AndreBaseCore\Exceptions\ExceptionsServiceProvider;
+use AndreBaseCore\Flash\FlashServiceProvider;
+use AndreBaseCore\Input\OldInputServiceProvider;
+use AndreBaseCore\Kernels\KernelsServiceProvider;
+use AndreBaseCore\Middleware\MiddlewareServiceProvider;
+use AndreBaseCore\Requests\RequestsServiceProvider;
+use AndreBaseCore\Responses\ResponsesServiceProvider;
+use AndreBaseCore\Routing\RoutingServiceProvider;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\Support\Arr;
+use AndreBaseCore\View\ViewServiceProvider;
 
 /**
  * Load service providers.
@@ -57,9 +57,9 @@ trait LoadsServiceProvidersTrait {
 	 * @return void
 	 */
 	protected function loadServiceProviders( Container $container ) {
-		$container[ RANKAI_SERVICE_PROVIDERS_KEY ] = array_merge(
+		$container[ ANDREBASE_SERVICE_PROVIDERS_KEY ] = array_merge(
 			$this->service_providers,
-			Arr::get( $container[ RANKAI_CONFIG_KEY ], 'providers', [] )
+			Arr::get( $container[ ANDREBASE_CONFIG_KEY ], 'providers', [] )
 		);
 
 		$service_providers = array_map(
@@ -78,7 +78,7 @@ trait LoadsServiceProvidersTrait {
 
 				return $container[ $service_provider ];
 			},
-			$container[ RANKAI_SERVICE_PROVIDERS_KEY ]
+			$container[ ANDREBASE_SERVICE_PROVIDERS_KEY ]
 		);
 
 		$this->registerServiceProviders( $service_providers, $container );

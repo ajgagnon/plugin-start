@@ -7,9 +7,9 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\ServiceProviders;
+namespace AndreBaseCore\ServiceProviders;
 
-use RankAIVendors\Pimple\Container;
+use AndreBaseVendors\Pimple\Container;
 
 /**
  * Interface that service providers must implement

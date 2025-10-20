@@ -7,13 +7,13 @@
  * @link      https://surecart
  */
 
-namespace RankAICore\Kernels;
+namespace AndreBaseCore\Kernels;
 
 use Closure;
-use RankAIVendors\Psr\Http\Message\ResponseInterface;
-use RankAICore\Helpers\Handler;
-use RankAICore\Middleware\HasMiddlewareDefinitionsInterface;
-use RankAICore\Requests\RequestInterface;
+use AndreBaseVendors\Psr\Http\Message\ResponseInterface;
+use AndreBaseCore\Helpers\Handler;
+use AndreBaseCore\Middleware\HasMiddlewareDefinitionsInterface;
+use AndreBaseCore\Requests\RequestInterface;
 
 /**
  * Describes how a request is handled.

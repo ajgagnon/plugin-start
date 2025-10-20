@@ -7,12 +7,12 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Routing\Conditions;
+namespace AndreBaseCore\Routing\Conditions;
 
-use RankAICore\Exceptions\ConfigurationException;
-use RankAICore\Helpers\Url as UrlUtility;
-use RankAICore\Requests\RequestInterface;
-use RankAICore\Support\Arr;
+use AndreBaseCore\Exceptions\ConfigurationException;
+use AndreBaseCore\Helpers\Url as UrlUtility;
+use AndreBaseCore\Requests\RequestInterface;
+use AndreBaseCore\Support\Arr;
 
 /**
  * Check against the current url

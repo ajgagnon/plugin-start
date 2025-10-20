@@ -7,13 +7,13 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Exceptions;
+namespace AndreBaseCore\Exceptions;
 
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
-use RankAICore\Exceptions\Whoops\DebugDataProvider;
-use RankAICore\ServiceProviders\ExtendsConfigTrait;
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\Exceptions\Whoops\DebugDataProvider;
+use AndreBaseCore\ServiceProviders\ExtendsConfigTrait;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide exceptions dependencies.
@@ -42,7 +42,7 @@ class ExceptionsServiceProvider implements ServiceProviderInterface {
 
 		$container[ PrettyPageHandler::class ] = function ( $container ) {
 			$handler = new PrettyPageHandler();
-			$handler->addResourcePath( implode( DIRECTORY_SEPARATOR, [ RANKAI_DIR, 'src', 'Exceptions', 'Whoops' ] ) );
+			$handler->addResourcePath( implode( DIRECTORY_SEPARATOR, [ ANDREBASE_DIR, 'src', 'Exceptions', 'Whoops' ] ) );
 
 			$handler->addDataTableCallback(
 				'WP Emerge: Route',
@@ -71,16 +71,16 @@ class ExceptionsServiceProvider implements ServiceProviderInterface {
 			return $run;
 		};
 
-		$container[ RANKAI_EXCEPTIONS_ERROR_HANDLER_KEY ] = function ( $container ) {
-			$debug  = $container[ RANKAI_CONFIG_KEY ]['debug'];
+		$container[ ANDREBASE_EXCEPTIONS_ERROR_HANDLER_KEY ] = function ( $container ) {
+			$debug  = $container[ ANDREBASE_CONFIG_KEY ]['debug'];
 			$whoops = $debug['pretty_errors'] ? $container[ Run::class ] : null;
-			return new ErrorHandler( $container[ RANKAI_RESPONSE_SERVICE_KEY ], $whoops, $debug['enable'] );
+			return new ErrorHandler( $container[ ANDREBASE_RESPONSE_SERVICE_KEY ], $whoops, $debug['enable'] );
 		};
 
-		$container[ RANKAI_EXCEPTIONS_CONFIGURATION_ERROR_HANDLER_KEY ] = function ( $container ) {
-			$debug  = $container[ RANKAI_CONFIG_KEY ]['debug'];
+		$container[ ANDREBASE_EXCEPTIONS_CONFIGURATION_ERROR_HANDLER_KEY ] = function ( $container ) {
+			$debug  = $container[ ANDREBASE_CONFIG_KEY ]['debug'];
 			$whoops = $debug['pretty_errors'] ? $container[ Run::class ] : null;
-			return new ErrorHandler( $container[ RANKAI_RESPONSE_SERVICE_KEY ], $whoops, $debug['enable'] );
+			return new ErrorHandler( $container[ ANDREBASE_RESPONSE_SERVICE_KEY ], $whoops, $debug['enable'] );
 		};
 	}
 

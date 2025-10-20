@@ -7,10 +7,10 @@
  * @link      https://surecart.com/
  */
 
-namespace RankAICore\Routing;
+namespace AndreBaseCore\Routing;
 
-use RankAICore\Exceptions\ConfigurationException;
-use RankAICore\Support\Arr;
+use AndreBaseCore\Exceptions\ConfigurationException;
+use AndreBaseCore\Support\Arr;
 
 /**
  * Allow objects to have routes

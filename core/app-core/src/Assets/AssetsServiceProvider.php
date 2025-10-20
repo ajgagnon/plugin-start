@@ -7,9 +7,9 @@
  * @link      https://surecart.com
  */
 
-namespace RankAIAppCore\Assets;
+namespace AndreBaseAppCore\Assets;
 
-use RankAICore\ServiceProviders\ServiceProviderInterface;
+use AndreBaseCore\ServiceProviders\ServiceProviderInterface;
 
 /**
  * Provide assets dependencies.
@@ -22,13 +22,13 @@ class AssetsServiceProvider implements ServiceProviderInterface {
 	 */
 	public function register( $container ) {
 		$container['surecart_app_core.assets.manifest'] = function ( $c ) {
-			return new Manifest( $c[ RANKAI_CONFIG_KEY ]['app_core']['path'] );
+			return new Manifest( $c[ ANDREBASE_CONFIG_KEY ]['app_core']['path'] );
 		};
 
 		$container['surecart_app_core.assets.assets'] = function ( $container ) {
 			return new Assets(
-				$container[ RANKAI_CONFIG_KEY ]['app_core']['path'],
-				$container[ RANKAI_CONFIG_KEY ]['app_core']['url'],
+				$container[ ANDREBASE_CONFIG_KEY ]['app_core']['path'],
+				$container[ ANDREBASE_CONFIG_KEY ]['app_core']['url'],
 				$container['surecart_app_core.config.config'],
 				$container['surecart_app_core.assets.manifest']
 			);
