@@ -5,6 +5,10 @@
   z-index: 0;
   @import "tailwindcss/preflight.css";
   @import "tailwindcss/utilities.css";
+  * {
+    outline-color: var(--ring);
+    border-color: var(--border);
+  }
 }
 
 @import "tw-animate-css";
