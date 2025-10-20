@@ -57,6 +57,13 @@ class PluginTemplateCreator {
 	private $dry_run = false;
 
 	/**
+	 * Reinstall Composer dependencies.
+	 *
+	 * @var bool
+	 */
+	private $reinstall_composer = false;
+
+	/**
 	 * Files and directories to skip.
 	 *
 	 * @var array
@@ -101,6 +108,10 @@ class PluginTemplateCreator {
 		$this->output( "\nProcessing JavaScript files...\n", 'success' );
 		$this->process_js_files();
 
+		// Process CSS files
+		$this->output( "\nProcessing CSS files...\n", 'success' );
+		$this->process_css_files();
+
 		// Process JSON files
 		$this->output( "\nProcessing JSON configuration files...\n", 'success' );
 		$this->process_json_files();
@@ -108,6 +119,20 @@ class PluginTemplateCreator {
 		// Rename main plugin file
 		$this->output( "\nRenaming main plugin file...\n", 'success' );
 		$this->rename_main_file();
+
+		// Rename class file
+		$this->output( "\nRenaming class file...\n", 'success' );
+		$this->rename_class_file();
+
+		// Process XML files
+		$this->output( "\nProcessing XML files...\n", 'success' );
+		$this->process_xml_files();
+
+		// Reinstall Composer dependencies.
+		if ( $this->reinstall_composer && ! $this->dry_run ) {
+			$this->output( "\nReinstalling Composer dependencies...\n", 'success' );
+			$this->reinstall_composer_dependencies();
+		}
 
 		// Final instructions
 		$this->print_footer();
@@ -188,6 +213,12 @@ class PluginTemplateCreator {
 		$dry_run       = $this->prompt( 'Dry run? (y/n)', 'n' );
 		$this->dry_run = strtolower( $dry_run ) === 'y';
 
+		// Composer reinstall (only if not in dry run mode).
+		if ( ! $this->dry_run ) {
+			$reinstall                  = $this->prompt( 'Reinstall Composer dependencies (recommended)? (y/n)', 'y' );
+			$this->reinstall_composer = strtolower( $reinstall ) === 'y';
+		}
+
 		return true;
 	}
 
@@ -251,58 +282,21 @@ class PluginTemplateCreator {
 		$content          = file_get_contents( $file );
 		$original_content = $content;
 
-		// Replace namespaces (order matters - do more specific ones first).
-		$content = str_replace( 'namespace ' . $this->original['namespace_appcore'], 'namespace ' . $this->new['namespace_appcore'], $content );
-		$content = str_replace( 'namespace ' . $this->original['namespace_core'], 'namespace ' . $this->new['namespace_core'], $content );
-		$content = str_replace( 'namespace ' . $this->original['namespace'] . '\\', 'namespace ' . $this->new['namespace'] . '\\', $content );
-		$content = str_replace( 'namespace ' . $this->original['namespace'] . ';', 'namespace ' . $this->new['namespace'] . ';', $content );
-
-		// Replace use statements.
-		$content = str_replace( 'use ' . $this->original['namespace_appcore'] . '\\', 'use ' . $this->new['namespace_appcore'] . '\\', $content );
-		$content = str_replace( 'use ' . $this->original['namespace_core'] . '\\', 'use ' . $this->new['namespace_core'] . '\\', $content );
-		$content = str_replace( 'use ' . $this->original['namespace'] . '\\', 'use ' . $this->new['namespace'] . '\\', $content );
-
-		// Replace fully qualified class names (with leading backslash).
-		$content = str_replace( '\\' . $this->original['namespace_vendors'] . '\\', '\\' . $this->new['namespace_vendors'] . '\\', $content );
-		$content = str_replace( '\\' . $this->original['namespace_appcore'] . '\\', '\\' . $this->new['namespace_appcore'] . '\\', $content );
-		$content = str_replace( '\\' . $this->original['namespace_core'] . '\\', '\\' . $this->new['namespace_core'] . '\\', $content );
-		$content = str_replace( '\\' . $this->original['namespace'] . '\\', '\\' . $this->new['namespace'] . '\\', $content );
-
-		// Replace namespace references in strings (for config arrays).
-		$content = str_replace( "'" . $this->original['namespace_appcore'] . '\\\\', "'" . $this->new['namespace_appcore'] . '\\\\', $content );
-		$content = str_replace( "'" . $this->original['namespace_core'] . '\\\\', "'" . $this->new['namespace_core'] . '\\\\', $content );
-		$content = str_replace( "'" . $this->original['namespace'] . '\\\\', "'" . $this->new['namespace'] . '\\\\', $content );
-
-		// Replace @mixin references.
-		$content = str_replace( '@mixin \\' . $this->original['namespace_appcore'] . '\\', '@mixin \\' . $this->new['namespace_appcore'] . '\\', $content );
-		$content = str_replace( '@mixin \\' . $this->original['namespace_core'] . '\\', '@mixin \\' . $this->new['namespace_core'] . '\\', $content );
-		$content = str_replace( '@mixin \\' . $this->original['namespace'] . '\\', '@mixin \\' . $this->new['namespace'] . '\\', $content );
+		// Replace namespaces (order matters - do more specific ones first to avoid partial replacements).
+		$content = str_replace( $this->original['namespace_appcore'], $this->new['namespace_appcore'], $content );
+		$content = str_replace( $this->original['namespace_vendors'], $this->new['namespace_vendors'], $content );
+		$content = str_replace( $this->original['namespace_core'], $this->new['namespace_core'], $content );
+		$content = str_replace( $this->original['namespace'], $this->new['namespace'], $content );
 
 		// Replace constants.
-		$content = preg_replace( '/\b' . $this->original['constant_prefix'] . '_/', $this->new['constant_prefix'] . '_', $content );
+		$content = str_replace( $this->original['constant_prefix'], $this->new['constant_prefix'], $content );
 
-		// Replace constant string values (like 'RANKAI.config' in define statements).
-		$content = str_replace( "'" . $this->original['constant_prefix'] . '.', "'" . $this->new['constant_prefix'] . '.', $content );
-
-		// Replace text domain in translation functions.
-		$content = str_replace( "'" . $this->original['slug'] . "'", "'" . $this->new['slug'] . "'", $content );
-		$content = str_replace( '"' . $this->original['slug'] . '"', '"' . $this->new['slug'] . '"', $content );
-
-		// Replace submenu slugs and composite slugs (like 'rank-ai-settings').
-		$content = str_replace( "'" . $this->original['slug'] . '-', "'" . $this->new['slug'] . '-', $content );
-		$content = str_replace( '"' . $this->original['slug'] . '-', '"' . $this->new['slug'] . '-', $content );
-
-		// Replace @package annotations.
-		$content = str_replace( '@package ' . $this->original['namespace'], '@package ' . $this->new['namespace'], $content );
-		$content = str_replace( '@package ' . $this->original['namespace_core'], '@package ' . $this->new['namespace_core'], $content );
-		$content = str_replace( '@package ' . $this->original['namespace_appcore'], '@package ' . $this->new['namespace_appcore'], $content );
-
-		// Replace class names (be careful with this).
-		$content = preg_replace( '/\bclass ' . $this->original['class_name'] . '\b/', 'class ' . $this->new['class_name'], $content );
-		$content = str_replace( '\\' . $this->original['class_name'] . '\\' . $this->original['class_name'], '\\' . $this->new['namespace'] . '\\' . $this->new['class_name'], $content );
+		// Replace slugs.
+		$content = str_replace( $this->original['slug'], $this->new['slug'], $content );
+		$content = str_replace( $this->original['slug_underscore'], $this->new['slug_underscore'], $content );
 
 		// Plugin header specific replacements (only in main plugin file).
-		if ( basename( $file ) === $this->original['slug'] . '.php' ) {
+		if ( basename( $file ) === $this->original['slug'] . '.php' || basename( $file ) === $this->new['slug'] . '.php' ) {
 			$content = preg_replace( '/\* Plugin Name:.*$/m', '* Plugin Name: ' . $this->new['name'], $content );
 			$content = preg_replace( '/\* Plugin URI:.*$/m', '* Plugin URI: ' . $this->new['plugin_uri'], $content );
 			$content = preg_replace( '/\* Description:.*$/m', '* Description: ' . $this->new['description'], $content );
@@ -362,6 +356,52 @@ class PluginTemplateCreator {
 		$content = str_replace( '.' . $this->original['slug'], '.' . $this->new['slug'], $content );
 		$content = str_replace( '"' . $this->original['slug'] . '"', '"' . $this->new['slug'] . '"', $content );
 		$content = str_replace( "'" . $this->original['slug'] . "'", "'" . $this->new['slug'] . "'", $content );
+
+		// Only write if content changed.
+		if ( $content !== $original_content ) {
+			if ( ! $this->dry_run ) {
+				file_put_contents( $file, $content );
+			}
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Process all CSS files.
+	 */
+	private function process_css_files() {
+		$files = $this->get_css_files( $this->base_dir );
+		$count = 0;
+
+		foreach ( $files as $file ) {
+			if ( $this->should_skip_path( $file ) ) {
+				continue;
+			}
+
+			if ( $this->process_css_file( $file ) ) {
+				++$count;
+				$this->output( '  ✓ ' . $this->get_relative_path( $file ) . "\n", 'success' );
+			}
+		}
+
+		$this->output( "\nProcessed $count CSS files.\n", 'success' );
+	}
+
+	/**
+	 * Process a single CSS file.
+	 *
+	 * @param string $file File path to process.
+	 * @return bool True if file was modified, false otherwise.
+	 */
+	private function process_css_file( $file ) {
+		$content          = file_get_contents( $file );
+		$original_content = $content;
+
+		// Replace slugs (will handle .rank-ai, #rank-ai, rank-ai-, etc.).
+		$content = str_replace( $this->original['slug'], $this->new['slug'], $content );
+		$content = str_replace( $this->original['slug_underscore'], $this->new['slug_underscore'], $content );
 
 		// Only write if content changed.
 		if ( $content !== $original_content ) {
@@ -510,6 +550,134 @@ class PluginTemplateCreator {
 	}
 
 	/**
+	 * Rename main class file.
+	 */
+	private function rename_class_file() {
+		$old_file = $this->base_dir . '/app/src/' . $this->original['class_name'] . '.php';
+		$new_file = $this->base_dir . '/app/src/' . $this->new['class_name'] . '.php';
+
+		if ( file_exists( $old_file ) && $old_file !== $new_file ) {
+			if ( ! $this->dry_run ) {
+				// phpcs:ignore WordPress.WP.AlternativeFunctions.rename_rename -- CLI script, WP_Filesystem not available.
+				rename( $old_file, $new_file );
+			}
+			$this->output( '  ✓ Renamed app/src/' . $this->original['class_name'] . '.php to app/src/' . $this->new['class_name'] . '.php' . "\n", 'success' );
+		}
+	}
+
+	/**
+	 * Process XML files.
+	 */
+	private function process_xml_files() {
+		$files = $this->get_xml_files( $this->base_dir );
+		$count = 0;
+
+		foreach ( $files as $file ) {
+			if ( $this->should_skip_path( $file ) ) {
+				continue;
+			}
+
+			if ( $this->process_xml_file( $file ) ) {
+				++$count;
+				$this->output( '  ✓ ' . $this->get_relative_path( $file ) . "\n", 'success' );
+			}
+		}
+
+		$this->output( "\nProcessed $count XML files.\n", 'success' );
+	}
+
+	/**
+	 * Process a single XML file.
+	 *
+	 * @param string $file File path to process.
+	 * @return bool True if file was modified, false otherwise.
+	 */
+	private function process_xml_file( $file ) {
+		$content          = file_get_contents( $file );
+		$original_content = $content;
+
+		// Replace namespaces (order matters - do more specific ones first).
+		$content = str_replace( $this->original['namespace_appcore'], $this->new['namespace_appcore'], $content );
+		$content = str_replace( $this->original['namespace_vendors'], $this->new['namespace_vendors'], $content );
+		$content = str_replace( $this->original['namespace_core'], $this->new['namespace_core'], $content );
+		$content = str_replace( $this->original['namespace'], $this->new['namespace'], $content );
+
+		// Replace slugs.
+		$content = str_replace( $this->original['slug'], $this->new['slug'], $content );
+
+		// Only write if content changed.
+		if ( $content !== $original_content ) {
+			if ( ! $this->dry_run ) {
+				file_put_contents( $file, $content );
+			}
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Reinstall Composer dependencies.
+	 */
+	private function reinstall_composer_dependencies() {
+		$vendor_dir  = $this->base_dir . '/vendor';
+		$lock_file   = $this->base_dir . '/composer.lock';
+		$has_error   = false;
+
+		// Delete vendor directory.
+		if ( is_dir( $vendor_dir ) ) {
+			$this->output( '  Deleting vendor/ directory...', 'info' );
+			if ( $this->delete_directory( $vendor_dir ) ) {
+				$this->output( " ✓\n", 'success' );
+			} else {
+				$this->output( " ✗ Failed to delete vendor/ directory\n", 'error' );
+				$has_error = true;
+			}
+		}
+
+		// Delete composer.lock.
+		if ( file_exists( $lock_file ) ) {
+			$this->output( '  Deleting composer.lock...', 'info' );
+			// phpcs:ignore WordPress.WP.AlternativeFunctions.unlink_unlink -- CLI script, WP_Filesystem not available.
+			if ( unlink( $lock_file ) ) {
+				$this->output( " ✓\n", 'success' );
+			} else {
+				$this->output( " ✗ Failed to delete composer.lock\n", 'error' );
+				$has_error = true;
+			}
+		}
+
+		if ( $has_error ) {
+			$this->output( "\nSkipping composer install due to errors.\n", 'warning' );
+			return;
+		}
+
+		// Run composer install.
+		$this->output( '  Running composer install (this may take a while)...', 'info' );
+		$this->output( "\n\n", '' );
+
+		// Change to base directory and run composer install.
+		$original_dir = getcwd();
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chdir -- CLI script, WP_Filesystem not available.
+		chdir( $this->base_dir );
+
+		// Run composer install.
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.system_calls_passthru -- CLI script, safe command execution.
+		passthru( 'composer install 2>&1', $return_code );
+
+		// Change back to original directory.
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_chdir -- CLI script, WP_Filesystem not available.
+		chdir( $original_dir );
+
+		if ( 0 === $return_code ) {
+			$this->output( "\n  ✓ Composer dependencies reinstalled successfully\n", 'success' );
+		} else {
+			$this->output( "\n  ✗ Composer install failed with exit code: $return_code\n", 'error' );
+			$this->output( "  Please run 'composer install' manually.\n", 'warning' );
+		}
+	}
+
+	/**
 	 * Print footer with instructions.
 	 */
 	private function print_footer() {
@@ -522,12 +690,23 @@ class PluginTemplateCreator {
 			$this->output( "Run again without dry run mode to apply changes.\n\n", 'info' );
 		} else {
 			$this->output( "Next steps:\n\n", 'info' );
-			$this->output( "1. Run: composer install\n" );
-			$this->output( "2. Run: npm install\n" );
-			$this->output( "3. Run: npm run build\n" );
-			$this->output( "4. Review and update any hardcoded references to 'rank-ai'\n" );
-			$this->output( "5. Test the plugin thoroughly\n" );
-			$this->output( "6. Delete create-plugin.php (this file)\n\n" );
+			$step = 1;
+
+			// Only show composer install if it wasn't already done.
+			if ( ! $this->reinstall_composer ) {
+				$this->output( "$step. Run: composer install\n" );
+				++$step;
+			}
+
+			$this->output( "$step. Run: npm install\n" );
+			++$step;
+			$this->output( "$step. Run: npm run build\n" );
+			++$step;
+			$this->output( "$step. Review and update any hardcoded references to '" . $this->original['slug'] . "'\n" );
+			++$step;
+			$this->output( "$step. Test the plugin thoroughly\n" );
+			++$step;
+			$this->output( "$step. Delete create-plugin.php (this file)\n\n" );
 		}
 	}
 
@@ -576,6 +755,50 @@ class PluginTemplateCreator {
 	}
 
 	/**
+	 * Get all XML files recursively.
+	 *
+	 * @param string $dir Directory to search.
+	 * @return array Array of file paths.
+	 */
+	private function get_xml_files( $dir ) {
+		$files    = array();
+		$iterator = new RecursiveIteratorIterator(
+			new RecursiveDirectoryIterator( $dir, RecursiveDirectoryIterator::SKIP_DOTS ),
+			RecursiveIteratorIterator::SELF_FIRST
+		);
+
+		foreach ( $iterator as $file ) {
+			if ( $file->isFile() && $file->getExtension() === 'xml' ) {
+				$files[] = $file->getPathname();
+			}
+		}
+
+		return $files;
+	}
+
+	/**
+	 * Get all CSS files recursively.
+	 *
+	 * @param string $dir Directory to search.
+	 * @return array Array of file paths.
+	 */
+	private function get_css_files( $dir ) {
+		$files    = array();
+		$iterator = new RecursiveIteratorIterator(
+			new RecursiveDirectoryIterator( $dir, RecursiveDirectoryIterator::SKIP_DOTS ),
+			RecursiveIteratorIterator::SELF_FIRST
+		);
+
+		foreach ( $iterator as $file ) {
+			if ( $file->isFile() && $file->getExtension() === 'css' ) {
+				$files[] = $file->getPathname();
+			}
+		}
+
+		return $files;
+	}
+
+	/**
 	 * Check if path should be skipped.
 	 *
 	 * @param string $path File path to check.
@@ -599,6 +822,34 @@ class PluginTemplateCreator {
 	 */
 	private function get_relative_path( $file ) {
 		return str_replace( $this->base_dir . DIRECTORY_SEPARATOR, '', $file );
+	}
+
+	/**
+	 * Delete a directory recursively.
+	 *
+	 * @param string $dir Directory to delete.
+	 * @return bool True on success, false on failure.
+	 */
+	private function delete_directory( $dir ) {
+		if ( ! is_dir( $dir ) ) {
+			return false;
+		}
+
+		$files = array_diff( scandir( $dir ), array( '.', '..' ) );
+
+		foreach ( $files as $file ) {
+			$path = $dir . DIRECTORY_SEPARATOR . $file;
+
+			if ( is_dir( $path ) ) {
+				$this->delete_directory( $path );
+			} else {
+				// phpcs:ignore WordPress.WP.AlternativeFunctions.unlink_unlink -- CLI script, WP_Filesystem not available.
+				unlink( $path );
+			}
+		}
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_rmdir -- CLI script, WP_Filesystem not available.
+		return rmdir( $dir );
 	}
 
 	/**
