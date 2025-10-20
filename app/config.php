@@ -105,6 +105,6 @@ return array(
 	 */
 	'app_core'               => array(
 		'path' => dirname( __DIR__ ),
-		'url'  => plugin_dir_url( RANK_AI_PLUGIN_FILE ),
+		'url'  => plugin_dir_url( RANKAI_PLUGIN_FILE ),
 	),
 );

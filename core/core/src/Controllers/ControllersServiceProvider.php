@@ -23,7 +23,7 @@ class ControllersServiceProvider implements ServiceProviderInterface {
 	 */
 	public function register( $container ) {
 		$container[ WordPressController::class ] = function ( $c ) {
-			return new WordPressController( $c[ RANK_AI_VIEW_SERVICE_KEY ] );
+			return new WordPressController( $c[ RANKAI_VIEW_SERVICE_KEY ] );
 		};
 	}
 

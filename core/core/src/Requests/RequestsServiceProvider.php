@@ -21,7 +21,7 @@ class RequestsServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container[ RANK_AI_REQUEST_KEY ] = function () {
+		$container[ RANKAI_REQUEST_KEY ] = function () {
 			return Request::fromGlobals();
 		};
 	}

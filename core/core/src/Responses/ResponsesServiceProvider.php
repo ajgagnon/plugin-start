@@ -21,12 +21,12 @@ class ResponsesServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container[ RANK_AI_RESPONSE_SERVICE_KEY ] = function ( $c ) {
-			return new ResponseService( $c[ RANK_AI_REQUEST_KEY ], $c[ RANK_AI_VIEW_SERVICE_KEY ] );
+		$container[ RANKAI_RESPONSE_SERVICE_KEY ] = function ( $c ) {
+			return new ResponseService( $c[ RANKAI_REQUEST_KEY ], $c[ RANKAI_VIEW_SERVICE_KEY ] );
 		};
 
-		$app = $container[ RANK_AI_APPLICATION_KEY ];
-		$app->alias( 'responses', RANK_AI_RESPONSE_SERVICE_KEY );
+		$app = $container[ RANKAI_APPLICATION_KEY ];
+		$app->alias( 'responses', RANKAI_RESPONSE_SERVICE_KEY );
 
 		$app->alias(
 			'response',

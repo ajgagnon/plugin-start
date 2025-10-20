@@ -37,33 +37,33 @@ class ViewServiceProvider implements ServiceProviderInterface {
 			]
 		);
 
-		$container[ RANK_AI_VIEW_SERVICE_KEY ] = function ( $c ) {
+		$container[ RANKAI_VIEW_SERVICE_KEY ] = function ( $c ) {
 			return new ViewService(
-				$c[ RANK_AI_CONFIG_KEY ]['view_composers'],
-				$c[ RANK_AI_VIEW_ENGINE_KEY ],
-				$c[ RANK_AI_HELPERS_HANDLER_FACTORY_KEY ]
+				$c[ RANKAI_CONFIG_KEY ]['view_composers'],
+				$c[ RANKAI_VIEW_ENGINE_KEY ],
+				$c[ RANKAI_HELPERS_HANDLER_FACTORY_KEY ]
 			);
 		};
 
-		$container[ RANK_AI_VIEW_COMPOSE_ACTION_KEY ] = function ( $c ) {
+		$container[ RANKAI_VIEW_COMPOSE_ACTION_KEY ] = function ( $c ) {
 			return function ( ViewInterface $view ) use ( $c ) {
-				$view_service = $c[ RANK_AI_VIEW_SERVICE_KEY ];
+				$view_service = $c[ RANKAI_VIEW_SERVICE_KEY ];
 				$view_service->compose( $view );
 				return $view;
 			};
 		};
 
-		$container[ RANK_AI_VIEW_PHP_VIEW_ENGINE_KEY ] = function ( $c ) {
-			$finder = new PhpViewFilesystemFinder( MixedType::toArray( $c[ RANK_AI_CONFIG_KEY ]['views'] ) );
-			return new PhpViewEngine( $c[ RANK_AI_VIEW_COMPOSE_ACTION_KEY ], $finder );
+		$container[ RANKAI_VIEW_PHP_VIEW_ENGINE_KEY ] = function ( $c ) {
+			$finder = new PhpViewFilesystemFinder( MixedType::toArray( $c[ RANKAI_CONFIG_KEY ]['views'] ) );
+			return new PhpViewEngine( $c[ RANKAI_VIEW_COMPOSE_ACTION_KEY ], $finder );
 		};
 
-		$container[ RANK_AI_VIEW_ENGINE_KEY ] = function ( $c ) {
-			return $c[ RANK_AI_VIEW_PHP_VIEW_ENGINE_KEY ];
+		$container[ RANKAI_VIEW_ENGINE_KEY ] = function ( $c ) {
+			return $c[ RANKAI_VIEW_PHP_VIEW_ENGINE_KEY ];
 		};
 
-		$app = $container[ RANK_AI_APPLICATION_KEY ];
-		$app->alias( 'views', RANK_AI_VIEW_SERVICE_KEY );
+		$app = $container[ RANKAI_APPLICATION_KEY ];
+		$app->alias( 'views', RANKAI_VIEW_SERVICE_KEY );
 
 		$app->alias(
 			'view',
@@ -83,7 +83,7 @@ class ViewServiceProvider implements ServiceProviderInterface {
 			'layoutContent',
 			function () use ( $app ) {
 				/** @var PhpViewEngine $engine */
-				$engine = $app->resolve( RANK_AI_VIEW_PHP_VIEW_ENGINE_KEY );
+				$engine = $app->resolve( RANKAI_VIEW_PHP_VIEW_ENGINE_KEY );
 
 				echo $engine->getLayoutContent();
 			}

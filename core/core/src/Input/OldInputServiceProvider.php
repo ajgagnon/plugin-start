@@ -21,16 +21,16 @@ class OldInputServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container[ RANK_AI_OLD_INPUT_KEY ] = function ( $c ) {
-			return new OldInput( $c[ RANK_AI_FLASH_KEY ] );
+		$container[ RANKAI_OLD_INPUT_KEY ] = function ( $c ) {
+			return new OldInput( $c[ RANKAI_FLASH_KEY ] );
 		};
 
 		$container[ OldInputMiddleware::class ] = function ( $c ) {
-			return new OldInputMiddleware( $c[ RANK_AI_OLD_INPUT_KEY ] );
+			return new OldInputMiddleware( $c[ RANKAI_OLD_INPUT_KEY ] );
 		};
 
-		$app = $container[ RANK_AI_APPLICATION_KEY ];
-		$app->alias( 'oldInput', RANK_AI_OLD_INPUT_KEY );
+		$app = $container[ RANKAI_APPLICATION_KEY ];
+		$app->alias( 'oldInput', RANKAI_OLD_INPUT_KEY );
 	}
 
 	/**

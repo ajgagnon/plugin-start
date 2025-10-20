@@ -38,28 +38,28 @@ class ApplicationServiceProvider implements ServiceProviderInterface {
 			]
 		);
 
-		$container[ RANK_AI_APPLICATION_GENERIC_FACTORY_KEY ] = function ( $c ) {
+		$container[ RANKAI_APPLICATION_GENERIC_FACTORY_KEY ] = function ( $c ) {
 			return new GenericFactory( $c );
 		};
 
-		$container[ RANK_AI_APPLICATION_CLOSURE_FACTORY_KEY ] = function ( $c ) {
-			return new ClosureFactory( $c[ RANK_AI_APPLICATION_GENERIC_FACTORY_KEY ] );
+		$container[ RANKAI_APPLICATION_CLOSURE_FACTORY_KEY ] = function ( $c ) {
+			return new ClosureFactory( $c[ RANKAI_APPLICATION_GENERIC_FACTORY_KEY ] );
 		};
 
-		$container[ RANK_AI_HELPERS_HANDLER_FACTORY_KEY ] = function ( $c ) {
-			return new HandlerFactory( $c[ RANK_AI_APPLICATION_GENERIC_FACTORY_KEY ] );
+		$container[ RANKAI_HELPERS_HANDLER_FACTORY_KEY ] = function ( $c ) {
+			return new HandlerFactory( $c[ RANKAI_APPLICATION_GENERIC_FACTORY_KEY ] );
 		};
 
-		$app = $container[ RANK_AI_APPLICATION_KEY ];
-		$app->alias( 'app', RANK_AI_APPLICATION_KEY );
-		$app->alias( 'closure', RANK_AI_APPLICATION_CLOSURE_FACTORY_KEY );
+		$app = $container[ RANKAI_APPLICATION_KEY ];
+		$app->alias( 'app', RANKAI_APPLICATION_KEY );
+		$app->alias( 'closure', RANKAI_APPLICATION_CLOSURE_FACTORY_KEY );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function bootstrap( $container ) {
-		$cache_dir = $container[ RANK_AI_CONFIG_KEY ]['cache']['path'];
+		$cache_dir = $container[ RANKAI_CONFIG_KEY ]['cache']['path'];
 		wp_mkdir_p( $cache_dir );
 	}
 }

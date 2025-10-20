@@ -50,7 +50,7 @@ class DebugDataProvider {
 	 */
 	public function route( $inspector ) {
 		/** @var \RankAICore\Routing\RouteInterface|null $route */
-		$route = $this->container[ RANK_AI_ROUTING_ROUTER_KEY ]->getCurrentRoute();
+		$route = $this->container[ RANKAI_ROUTING_ROUTER_KEY ]->getCurrentRoute();
 
 		if ( ! $route ) {
 			return [];

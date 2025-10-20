@@ -10,13 +10,13 @@
 /**
  * Absolute path to app core's directory
  */
-if ( ! defined( 'RANK_AI_APP_CORE_DIR' ) ) {
-	define( 'RANK_AI_APP_CORE_DIR', __DIR__ );
+if ( ! defined( 'RANKAI_APP_CORE_DIR' ) ) {
+	define( 'RANKAI_APP_CORE_DIR', __DIR__ );
 }
 
 /**
  * Absolute path to app core's src directory
  */
-if ( ! defined( 'RANK_AI_APP_CORE_SRC_DIR' ) ) {
-	define( 'RANK_AI_APP_CORE_SRC_DIR', RANK_AI_APP_CORE_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR );
+if ( ! defined( 'RANKAI_APP_CORE_SRC_DIR' ) ) {
+	define( 'RANKAI_APP_CORE_SRC_DIR', RANKAI_APP_CORE_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR );
 }

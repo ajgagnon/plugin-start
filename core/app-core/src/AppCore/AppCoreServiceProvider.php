@@ -33,12 +33,12 @@ class AppCoreServiceProvider implements ServiceProviderInterface {
 			]
 		);
 
-		$container['rank_ai_app_core.app_core.app_core'] = function( $c ) {
-			return new AppCore( $c[ RANK_AI_APPLICATION_KEY ] );
+		$container['RANKAI_app_core.app_core.app_core'] = function ( $c ) {
+			return new AppCore( $c[ RANKAI_APPLICATION_KEY ] );
 		};
 
-		$app = $container[ RANK_AI_APPLICATION_KEY ];
-		$app->alias( 'core', 'rank_ai_app_core.app_core.app_core' );
+		$app = $container[ RANKAI_APPLICATION_KEY ];
+		$app->alias( 'core', 'RANKAI_app_core.app_core.app_core' );
 	}
 
 	/**

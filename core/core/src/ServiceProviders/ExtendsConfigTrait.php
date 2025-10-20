@@ -56,11 +56,11 @@ trait ExtendsConfigTrait {
 	 * @return void
 	 */
 	public function extendConfig( $container, $key, $default ) {
-		$config = isset( $container[ RANK_AI_CONFIG_KEY ] ) ? $container[ RANK_AI_CONFIG_KEY ] : [];
+		$config = isset( $container[ RANKAI_CONFIG_KEY ] ) ? $container[ RANKAI_CONFIG_KEY ] : [];
 		$config = Arr::get( $config, $key, $default );
 
-		$container[ RANK_AI_CONFIG_KEY ] = array_merge(
-			$container[ RANK_AI_CONFIG_KEY ],
+		$container[ RANKAI_CONFIG_KEY ] = array_merge(
+			$container[ RANKAI_CONFIG_KEY ],
 			[ $key => $this->replaceConfig( $default, $config ) ]
 		);
 	}

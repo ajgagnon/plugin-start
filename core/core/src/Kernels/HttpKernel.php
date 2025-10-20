@@ -142,7 +142,7 @@ class HttpKernel implements HttpKernelInterface {
 	 * @return ResponseInterface|null
 	 */
 	protected function getResponse() {
-		return isset( $this->container[ RANK_AI_RESPONSE_KEY ] ) ? $this->container[ RANK_AI_RESPONSE_KEY ] : null;
+		return isset( $this->container[ RANKAI_RESPONSE_KEY ] ) ? $this->container[ RANKAI_RESPONSE_KEY ] : null;
 	}
 
 	/**
@@ -244,7 +244,7 @@ class HttpKernel implements HttpKernelInterface {
 			)
 		);
 
-		$this->container[ RANK_AI_RESPONSE_KEY ] = $response;
+		$this->container[ RANKAI_RESPONSE_KEY ] = $response;
 
 		return $response;
 	}
@@ -312,7 +312,7 @@ class HttpKernel implements HttpKernelInterface {
 				continue;
 			}
 
-			$this->container[ RANK_AI_APPLICATION_KEY ]
+			$this->container[ RANKAI_APPLICATION_KEY ]
 				->renderConfigExceptions(
 					function () use ( $route, &$query_vars ) {
 						$query_vars = $route->applyQueryFilter( $this->request, $query_vars );
@@ -346,7 +346,7 @@ class HttpKernel implements HttpKernelInterface {
 
 			add_action( 'surecart.kernels.http_kernel.respond', [ $this, 'respond' ] );
 
-			return RANK_AI_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'view.php';
+			return RANKAI_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'view.php';
 		}
 
 		// No route has matched, but we still want to compose views.
@@ -355,7 +355,7 @@ class HttpKernel implements HttpKernelInterface {
 		if ( ! empty( $composers ) ) {
 			add_action( 'surecart.kernels.http_kernel.respond', [ $this, 'compose' ] );
 
-			return RANK_AI_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'view.php';
+			return RANKAI_DIR . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'view.php';
 		}
 
 		return $template;

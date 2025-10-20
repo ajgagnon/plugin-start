@@ -55,8 +55,8 @@ class Application {
 	 */
 	public function __construct( Container $container, $render_config_exceptions = true ) {
 		$this->setContainer( $container );
-		$this->container()[ RANK_AI_APPLICATION_KEY ] = $this;
-		$this->render_config_exceptions                = $render_config_exceptions;
+		$this->container()[ RANKAI_APPLICATION_KEY ] = $this;
+		$this->render_config_exceptions              = $render_config_exceptions;
 	}
 
 	/**
@@ -91,8 +91,8 @@ class Application {
 				$this->loadRoutes();
 
 				if ( $run ) {
-					  $kernel = $this->resolve( RANK_AI_WORDPRESS_HTTP_KERNEL_KEY );
-					  $kernel->bootstrap();
+						$kernel = $this->resolve( RANKAI_WORDPRESS_HTTP_KERNEL_KEY );
+						$kernel->bootstrap();
 				}
 			}
 		);
@@ -107,7 +107,7 @@ class Application {
 	 * @return void
 	 */
 	protected function loadConfig( Container $container, $config ) {
-		$container[ RANK_AI_CONFIG_KEY ] = $config;
+		$container[ RANKAI_CONFIG_KEY ] = $config;
 	}
 
 	/**
@@ -138,7 +138,7 @@ class Application {
 	 * @return void
 	 */
 	protected function loadRoutesGroup( $group ) {
-		$config     = $this->resolve( RANK_AI_CONFIG_KEY );
+		$config     = $this->resolve( RANKAI_CONFIG_KEY );
 		$file       = Arr::get( $config, 'routes.' . $group . '.definitions', '' );
 		$attributes = Arr::get( $config, 'routes.' . $group . '.attributes', [] );
 
@@ -154,7 +154,7 @@ class Application {
 
 		$attributes['middleware'] = $middleware;
 
-		$blueprint = $this->resolve( RANK_AI_ROUTING_ROUTE_BLUEPRINT_KEY );
+		$blueprint = $this->resolve( RANKAI_ROUTING_ROUTE_BLUEPRINT_KEY );
 		$blueprint->attributes( $attributes )->group( $file );
 	}
 
@@ -174,11 +174,11 @@ class Application {
 			}
 
 			$request = Request::fromGlobals();
-			$handler = $this->resolve( RANK_AI_EXCEPTIONS_CONFIGURATION_ERROR_HANDLER_KEY );
+			$handler = $this->resolve( RANKAI_EXCEPTIONS_CONFIGURATION_ERROR_HANDLER_KEY );
 
 			add_filter( 'surecart.pretty_errors.apply_admin_styles', '__return_false' );
 
-			$response_service = $this->resolve( RANK_AI_RESPONSE_SERVICE_KEY );
+			$response_service = $this->resolve( RANKAI_RESPONSE_SERVICE_KEY );
 			$response_service->respond( $handler->getResponse( $request, $exception ) );
 
 			wp_die();

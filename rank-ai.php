@@ -21,18 +21,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'RANK_AI_PLUGIN_FILE', __FILE__ );
-define( 'RANK_AI_PLUGIN_DIR', __DIR__ );
+define( 'RANKAI_PLUGIN_FILE', __FILE__ );
+define( 'RANKAI_PLUGIN_DIR', __DIR__ );
 
-define( 'RANK_AI_PLUGIN_DIR_NAME', dirname( plugin_basename( RANK_AI_PLUGIN_FILE ) ) );
-define( 'RANK_AI_LANGUAGE_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'languages' );
-define( 'RANK_AI_DIST_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'dist' );
-define( 'RANK_AI_VENDOR_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'vendor' );
-define( 'RANK_AI_PLUGIN_BASE', plugin_basename( RANK_AI_PLUGIN_FILE ) );
+define( 'RANKAI_PLUGIN_DIR_NAME', dirname( plugin_basename( RANKAI_PLUGIN_FILE ) ) );
+define( 'RANKAI_LANGUAGE_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'languages' );
+define( 'RANKAI_DIST_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'dist' );
+define( 'RANKAI_VENDOR_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'vendor' );
+define( 'RANKAI_PLUGIN_BASE', plugin_basename( RANKAI_PLUGIN_FILE ) );
 
 // Load composer dependencies.
-if ( file_exists( RANK_AI_VENDOR_DIR . DIRECTORY_SEPARATOR . 'autoload.php' ) ) {
-	require_once RANK_AI_VENDOR_DIR . DIRECTORY_SEPARATOR . 'autoload.php';
+if ( file_exists( RANKAI_VENDOR_DIR . DIRECTORY_SEPARATOR . 'autoload.php' ) ) {
+	require_once RANKAI_VENDOR_DIR . DIRECTORY_SEPARATOR . 'autoload.php';
 }
 
 // Load helpers.

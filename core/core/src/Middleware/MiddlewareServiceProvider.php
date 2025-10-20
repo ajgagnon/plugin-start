@@ -22,15 +22,15 @@ class MiddlewareServiceProvider implements ServiceProviderInterface {
 	 */
 	public function register( $container ) {
 		$container[ UserLoggedOutMiddleware::class ] = function ( $c ) {
-			return new UserLoggedOutMiddleware( $c[ RANK_AI_RESPONSE_SERVICE_KEY ] );
+			return new UserLoggedOutMiddleware( $c[ RANKAI_RESPONSE_SERVICE_KEY ] );
 		};
 
 		$container[ UserLoggedInMiddleware::class ] = function ( $c ) {
-			return new UserLoggedInMiddleware( $c[ RANK_AI_RESPONSE_SERVICE_KEY ] );
+			return new UserLoggedInMiddleware( $c[ RANKAI_RESPONSE_SERVICE_KEY ] );
 		};
 
 		$container[ UserCanMiddleware::class ] = function ( $c ) {
-			return new UserCanMiddleware( $c[ RANK_AI_RESPONSE_SERVICE_KEY ] );
+			return new UserCanMiddleware( $c[ RANKAI_RESPONSE_SERVICE_KEY ] );
 		};
 	}
 

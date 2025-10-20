@@ -42,7 +42,7 @@ class ExceptionsServiceProvider implements ServiceProviderInterface {
 
 		$container[ PrettyPageHandler::class ] = function ( $container ) {
 			$handler = new PrettyPageHandler();
-			$handler->addResourcePath( implode( DIRECTORY_SEPARATOR, [ RANK_AI_DIR, 'src', 'Exceptions', 'Whoops' ] ) );
+			$handler->addResourcePath( implode( DIRECTORY_SEPARATOR, [ RANKAI_DIR, 'src', 'Exceptions', 'Whoops' ] ) );
 
 			$handler->addDataTableCallback(
 				'WP Emerge: Route',
@@ -71,16 +71,16 @@ class ExceptionsServiceProvider implements ServiceProviderInterface {
 			return $run;
 		};
 
-		$container[ RANK_AI_EXCEPTIONS_ERROR_HANDLER_KEY ] = function ( $container ) {
-			$debug  = $container[ RANK_AI_CONFIG_KEY ]['debug'];
+		$container[ RANKAI_EXCEPTIONS_ERROR_HANDLER_KEY ] = function ( $container ) {
+			$debug  = $container[ RANKAI_CONFIG_KEY ]['debug'];
 			$whoops = $debug['pretty_errors'] ? $container[ Run::class ] : null;
-			return new ErrorHandler( $container[ RANK_AI_RESPONSE_SERVICE_KEY ], $whoops, $debug['enable'] );
+			return new ErrorHandler( $container[ RANKAI_RESPONSE_SERVICE_KEY ], $whoops, $debug['enable'] );
 		};
 
-		$container[ RANK_AI_EXCEPTIONS_CONFIGURATION_ERROR_HANDLER_KEY ] = function ( $container ) {
-			$debug  = $container[ RANK_AI_CONFIG_KEY ]['debug'];
+		$container[ RANKAI_EXCEPTIONS_CONFIGURATION_ERROR_HANDLER_KEY ] = function ( $container ) {
+			$debug  = $container[ RANKAI_CONFIG_KEY ]['debug'];
 			$whoops = $debug['pretty_errors'] ? $container[ Run::class ] : null;
-			return new ErrorHandler( $container[ RANK_AI_RESPONSE_SERVICE_KEY ], $whoops, $debug['enable'] );
+			return new ErrorHandler( $container[ RANKAI_RESPONSE_SERVICE_KEY ], $whoops, $debug['enable'] );
 		};
 	}
 

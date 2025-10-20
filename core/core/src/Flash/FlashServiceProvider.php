@@ -25,10 +25,10 @@ class FlashServiceProvider implements ServiceProviderInterface {
 		global $sc_session;
 		$sc_session = [];
 
-		$container[ RANK_AI_FLASH_KEY ] = function ( $c ) use ( $sc_session ) {
+		$container[ RANKAI_FLASH_KEY ] = function ( $c ) use ( $sc_session ) {
 			$session = null;
-			if ( isset( $c[ RANK_AI_SESSION_KEY ] ) ) {
-				$session = &$c[ RANK_AI_SESSION_KEY ];
+			if ( isset( $c[ RANKAI_SESSION_KEY ] ) ) {
+				$session = &$c[ RANKAI_SESSION_KEY ];
 			} else {
 				$session = &$sc_session;
 			}
@@ -36,11 +36,11 @@ class FlashServiceProvider implements ServiceProviderInterface {
 		};
 
 		$container[ FlashMiddleware::class ] = function ( $c ) {
-			return new FlashMiddleware( $c[ RANK_AI_FLASH_KEY ] );
+			return new FlashMiddleware( $c[ RANKAI_FLASH_KEY ] );
 		};
 
-		$app = $container[ RANK_AI_APPLICATION_KEY ];
-		$app->alias( 'flash', RANK_AI_FLASH_KEY );
+		$app = $container[ RANKAI_APPLICATION_KEY ];
+		$app->alias( 'flash', RANKAI_FLASH_KEY );
 	}
 
 	/**

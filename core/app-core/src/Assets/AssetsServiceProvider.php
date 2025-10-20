@@ -21,14 +21,14 @@ class AssetsServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container['surecart_app_core.assets.manifest'] = function( $c ) {
-			return new Manifest( $c[ RANK_AI_CONFIG_KEY ]['app_core']['path'] );
+		$container['surecart_app_core.assets.manifest'] = function ( $c ) {
+			return new Manifest( $c[ RANKAI_CONFIG_KEY ]['app_core']['path'] );
 		};
 
-		$container['surecart_app_core.assets.assets'] = function( $container ) {
+		$container['surecart_app_core.assets.assets'] = function ( $container ) {
 			return new Assets(
-				$container[ RANK_AI_CONFIG_KEY ]['app_core']['path'],
-				$container[ RANK_AI_CONFIG_KEY ]['app_core']['url'],
+				$container[ RANKAI_CONFIG_KEY ]['app_core']['path'],
+				$container[ RANKAI_CONFIG_KEY ]['app_core']['url'],
 				$container['surecart_app_core.config.config'],
 				$container['surecart_app_core.assets.manifest']
 			);

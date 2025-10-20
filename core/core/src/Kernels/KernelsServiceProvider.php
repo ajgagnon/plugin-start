@@ -54,31 +54,31 @@ class KernelsServiceProvider implements ServiceProviderInterface {
 
 		$this->extendConfig( $container, 'middleware_priority', [] );
 
-		$container[ RANK_AI_WORDPRESS_HTTP_KERNEL_KEY ] = function ( $c ) {
+		$container[ RANKAI_WORDPRESS_HTTP_KERNEL_KEY ] = function ( $c ) {
 			$kernel = new HttpKernel(
 				$c,
-				$c[ RANK_AI_APPLICATION_GENERIC_FACTORY_KEY ],
-				$c[ RANK_AI_HELPERS_HANDLER_FACTORY_KEY ],
-				$c[ RANK_AI_RESPONSE_SERVICE_KEY ],
-				$c[ RANK_AI_REQUEST_KEY ],
-				$c[ RANK_AI_ROUTING_ROUTER_KEY ],
-				$c[ RANK_AI_VIEW_SERVICE_KEY ],
-				$c[ RANK_AI_EXCEPTIONS_ERROR_HANDLER_KEY ]
+				$c[ RANKAI_APPLICATION_GENERIC_FACTORY_KEY ],
+				$c[ RANKAI_HELPERS_HANDLER_FACTORY_KEY ],
+				$c[ RANKAI_RESPONSE_SERVICE_KEY ],
+				$c[ RANKAI_REQUEST_KEY ],
+				$c[ RANKAI_ROUTING_ROUTER_KEY ],
+				$c[ RANKAI_VIEW_SERVICE_KEY ],
+				$c[ RANKAI_EXCEPTIONS_ERROR_HANDLER_KEY ]
 			);
 
-			$kernel->setMiddleware( $c[ RANK_AI_CONFIG_KEY ]['middleware'] );
-			$kernel->setMiddlewareGroups( $c[ RANK_AI_CONFIG_KEY ]['middleware_groups'] );
-			$kernel->setMiddlewarePriority( $c[ RANK_AI_CONFIG_KEY ]['middleware_priority'] );
+			$kernel->setMiddleware( $c[ RANKAI_CONFIG_KEY ]['middleware'] );
+			$kernel->setMiddlewareGroups( $c[ RANKAI_CONFIG_KEY ]['middleware_groups'] );
+			$kernel->setMiddlewarePriority( $c[ RANKAI_CONFIG_KEY ]['middleware_priority'] );
 
 			return $kernel;
 		};
 
-		$app = $container[ RANK_AI_APPLICATION_KEY ];
+		$app = $container[ RANKAI_APPLICATION_KEY ];
 
 		$app->alias(
 			'run',
 			function () use ( $app ) {
-				$kernel = $app->resolve( RANK_AI_WORDPRESS_HTTP_KERNEL_KEY );
+				$kernel = $app->resolve( RANKAI_WORDPRESS_HTTP_KERNEL_KEY );
 				return call_user_func_array( [ $kernel, 'run' ], func_get_args() );
 			}
 		);

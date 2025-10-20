@@ -76,28 +76,28 @@ class RoutingServiceProvider implements ServiceProviderInterface {
 		);
 
 		/** @var Container $container */
-		$container[ RANK_AI_ROUTING_CONDITION_TYPES_KEY ] = static::$condition_types;
+		$container[ RANKAI_ROUTING_CONDITION_TYPES_KEY ] = static::$condition_types;
 
-		$container[ RANK_AI_ROUTING_ROUTER_KEY ] = function ( $c ) {
+		$container[ RANKAI_ROUTING_ROUTER_KEY ] = function ( $c ) {
 			return new Router(
-				$c[ RANK_AI_ROUTING_CONDITIONS_CONDITION_FACTORY_KEY ],
-				$c[ RANK_AI_HELPERS_HANDLER_FACTORY_KEY ]
+				$c[ RANKAI_ROUTING_CONDITIONS_CONDITION_FACTORY_KEY ],
+				$c[ RANKAI_HELPERS_HANDLER_FACTORY_KEY ]
 			);
 		};
 
-		$container[ RANK_AI_ROUTING_CONDITIONS_CONDITION_FACTORY_KEY ] = function ( $c ) {
-			return new ConditionFactory( $c[ RANK_AI_ROUTING_CONDITION_TYPES_KEY ] );
+		$container[ RANKAI_ROUTING_CONDITIONS_CONDITION_FACTORY_KEY ] = function ( $c ) {
+			return new ConditionFactory( $c[ RANKAI_ROUTING_CONDITION_TYPES_KEY ] );
 		};
 
-		$container[ RANK_AI_ROUTING_ROUTE_BLUEPRINT_KEY ] = $container->factory(
+		$container[ RANKAI_ROUTING_ROUTE_BLUEPRINT_KEY ] = $container->factory(
 			function ( $c ) {
-				return new RouteBlueprint( $c[ RANK_AI_ROUTING_ROUTER_KEY ], $c[ RANK_AI_VIEW_SERVICE_KEY ] );
+				return new RouteBlueprint( $c[ RANKAI_ROUTING_ROUTER_KEY ], $c[ RANKAI_VIEW_SERVICE_KEY ] );
 			}
 		);
 
-		$app = $container[ RANK_AI_APPLICATION_KEY ];
-		$app->alias( 'route', RANK_AI_ROUTING_ROUTE_BLUEPRINT_KEY );
-		$app->alias( 'routeUrl', RANK_AI_ROUTING_ROUTER_KEY, 'getRouteUrl' );
+		$app = $container[ RANKAI_APPLICATION_KEY ];
+		$app->alias( 'route', RANKAI_ROUTING_ROUTE_BLUEPRINT_KEY );
+		$app->alias( 'routeUrl', RANKAI_ROUTING_ROUTER_KEY, 'getRouteUrl' );
 	}
 
 	/**

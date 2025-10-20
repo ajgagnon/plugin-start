@@ -57,9 +57,9 @@ trait LoadsServiceProvidersTrait {
 	 * @return void
 	 */
 	protected function loadServiceProviders( Container $container ) {
-		$container[ RANK_AI_SERVICE_PROVIDERS_KEY ] = array_merge(
+		$container[ RANKAI_SERVICE_PROVIDERS_KEY ] = array_merge(
 			$this->service_providers,
-			Arr::get( $container[ RANK_AI_CONFIG_KEY ], 'providers', [] )
+			Arr::get( $container[ RANKAI_CONFIG_KEY ], 'providers', [] )
 		);
 
 		$service_providers = array_map(
@@ -78,7 +78,7 @@ trait LoadsServiceProvidersTrait {
 
 				return $container[ $service_provider ];
 			},
-			$container[ RANK_AI_SERVICE_PROVIDERS_KEY ]
+			$container[ RANKAI_SERVICE_PROVIDERS_KEY ]
 		);
 
 		$this->registerServiceProviders( $service_providers, $container );
