@@ -16,6 +16,7 @@ return array(
 		\AndreBaseAppCore\Config\ConfigServiceProvider::class,
 		\AndreBaseAppCore\Assets\AssetsServiceProvider::class,
 		\AndreBase\Admin\AdminServiceProvider::class,
+		\AndreBase\Front\FrontServiceProvider::class,
 	),
 
 	/**
