@@ -5,7 +5,7 @@
 import apiFetch from "@wordpress/api-fetch";
 import { createPayload } from "./utils";
 
-const ENDPOINT = "/wp-json/andre-base/v1/events";
+const ENDPOINT = "/andre-base/v1/events";
 
 /**
  * Sends events in a batch using WordPress API Fetch

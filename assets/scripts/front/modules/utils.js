@@ -25,10 +25,9 @@ export function getOrCreateSessionId() {
  * @param {Array} events - Array of rrweb events
  * @returns {Object} Formatted payload
  */
-export function createPayload(sessionId, events) {
+export function createPayload(session_id, events) {
   return {
-    sessionId,
+    session_id,
     events,
-    timestamp: Date.now(),
   };
 }

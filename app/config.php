@@ -12,11 +12,23 @@ return array(
 	 * Array of service providers you wish to enable.
 	 */
 	'providers'              => array(
+		// app core.
 		\AndreBaseAppCore\AppCore\AppCoreServiceProvider::class,
 		\AndreBaseAppCore\Config\ConfigServiceProvider::class,
 		\AndreBaseAppCore\Assets\AssetsServiceProvider::class,
+
+		// admin/front.
 		\AndreBase\Admin\AdminServiceProvider::class,
 		\AndreBase\Front\FrontServiceProvider::class,
+
+		// database.
+		\AndreBase\Database\MigrationsServiceProvider::class,
+
+		// events.
+		\AndreBase\Events\EventsServiceProvider::class,
+
+		// rest.
+		\AndreBase\Rest\RestEventsServiceProvider::class,
 	),
 
 	/**
