@@ -1,21 +1,74 @@
+/**
+ * rrweb session recording implementation
+ * Records user interactions and sends them to the server
+ */
+
 import { record } from "rrweb";
+import { getOrCreateSessionId } from "./modules/utils";
+import { sendBatch, sendCritical } from "./modules/sender";
 
+// Configuration
+const FLUSH_INTERVAL = 15000; // 15 seconds
+const SIZE_THRESHOLD = 50; // Flush when 50 events accumulated
+
+// State
 let events = [];
+const sessionId = getOrCreateSessionId();
 
-console.log("frontend test");
+/**
+ * Flushes events to the server using regular fetch
+ * Clears the events array after copying data
+ */
+function flushEvents() {
+  if (events.length === 0) return;
+
+  const eventsToSend = [...events];
+  events = [];
+
+  sendBatch(sessionId, eventsToSend)
+    .then(() => console.log(`Sent ${eventsToSend.length} events`))
+    .catch((err) => console.warn("Failed to send events:", err));
+}
+
+/**
+ * Sends events immediately using sendBeacon for reliability
+ * Used during page unload scenarios
+ */
+function flushCritical() {
+  if (events.length === 0) return;
+
+  const success = sendCritical(sessionId, events);
+  if (success) {
+    console.log(`Queued ${events.length} events via sendBeacon`);
+    events = [];
+  }
+}
+
+// Start recording
 record({
   emit(event) {
-    // push event into the events array
     events.push(event);
+
+    // Flush if buffer reaches size threshold
+    if (events.length >= SIZE_THRESHOLD) {
+      flushEvents();
+    }
   },
 });
 
-// this function will send events to the backend and reset the events array
-function save() {
-  const body = JSON.stringify({ events });
-  events = [];
-  console.log({ body });
-}
+// Periodic flush every 15 seconds
+setInterval(flushEvents, FLUSH_INTERVAL);
 
-// save events every 10 seconds
-setInterval(save, 10 * 1000);
+// Handle page unload events (browser close, navigation, etc.)
+["beforeunload", "pagehide"].forEach((eventType) => {
+  window.addEventListener(eventType, flushCritical);
+});
+
+// Handle visibility change (tab switching, minimizing)
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden && events.length > 0) {
+    flushEvents();
+  }
+});
+
+console.log(`Session recording started: ${sessionId}`);
