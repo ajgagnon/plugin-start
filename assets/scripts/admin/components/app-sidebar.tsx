@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Calendar, Gauge, Settings } from "lucide-react";
 
 import {
   Sidebar,
@@ -14,6 +14,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Link } from "../router";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -39,20 +40,24 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton
-                  tooltip="Quick Create"
+                  tooltip="Dashboard"
                   className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear"
                 >
-                  <Settings />
-                  <span>Quick Create</span>
+                  <Gauge />
+                  <span>Dashboard</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Dashboard">
-                  <Home />
-                  <span>Dashboard</span>
-                </SidebarMenuButton>
+                <Link
+                  as={SidebarMenuButton}
+                  params={{ page: "andre-base-settings" }}
+                  tooltip="Settings"
+                >
+                  <Settings />
+                  <span>Settings</span>
+                </Link>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>

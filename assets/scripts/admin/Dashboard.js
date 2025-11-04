@@ -43,7 +43,6 @@ export default function Page() {
               className="mr-2 data-[orientation=vertical]:h-4"
             />
           </header>
-          asdf
         </SidebarInset>
       </SidebarProvider>
     </div>
