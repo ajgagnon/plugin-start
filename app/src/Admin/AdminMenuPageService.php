@@ -34,11 +34,4 @@ class AdminMenuPageService {
 			'__return_false'
 		);
 	}
-
-	/**
-	 * Render the admin page.
-	 */
-	public function render_admin_page() {
-		echo '<div>Hello World</div>';
-	}
 }
